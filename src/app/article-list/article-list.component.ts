@@ -46,8 +46,8 @@ export class ArticleListComponent implements OnInit {
     this.isMynewsavailable.emit(data);
   }
   onGetWorldNews(chanel: string) {
-    this.newsapifilerrender = true;
-    this.myapifilerrender = false;
+    // this.newsapifilerrender = true;
+    // this.myapifilerrender = false;
     if (this.sourceChanel === chanel) {
       this.apiService.getWorldNews(chanel).subscribe(
         (articles: any) => {
