@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {News} from '../news';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -8,14 +9,16 @@ import {News} from '../news';
 })
 export class ArticleComponent implements OnInit {
   @Input() articles: News[];
-  @Input() isnews: boolean;
-  //@Input() isfilerrender: boolean;
+  @Input() isMynews: boolean;
+  @Input() isRenderButtons: boolean;
   char: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    //console.log(this.isfilerrender);
+  }
+  reRoute(url) {
+    this.router.navigate([url])
   }
   changeFilter(char: string) {
     this.char = char;

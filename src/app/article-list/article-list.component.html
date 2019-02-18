@@ -5,14 +5,15 @@
         <option  *ngFor="let i of chanels">{{i}}</option>
       </select>
     </div>
-    <!--<app-filter [articlestobefiltered]="articles"></app-filter>-->
     <form class="checkbox">
-      <label><input type="checkbox" id="1" (change)="onFilterChange($event)"/> only created by me</label>
+      <label><input type="checkbox" id="1" (change)="onFilterChange($event)"/>only created by me</label>
     </form>
-  <app-add-article-button></app-add-article-button>
+    <div class="addbutton">
+      <button class="btn btn-info" (click)="reRoute('create')">Add article</button>
+    </div>
   </div>
-    <app-article [isnews]="!isMynews" [articles]="articles"></app-article>
-    <app-article [isnews]="isMynews" [articles]="myArticles"></app-article>
+    <app-article *ngIf="!isMynews" [isMynews]="isMynews" [articles]="articles" [isRenderButtons]="isMynews"></app-article>
+    <app-article *ngIf="isMynews" [isMynews]="isMynews" [articles]="myArticles" [isRenderButtons]="isMynews"></app-article>
   <div style="display: flex; align-content: center; justify-content: center;" >
     <button type="submit" class="btn btn-success" (click)="addArticles()">Load more</button>
   </div>

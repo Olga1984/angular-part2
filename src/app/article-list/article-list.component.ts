@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { WorldNewsApiService } from '../world-news-api.service';
 import { News, myArticles } from '../news';
+import { MyNewsApiService } from '../my-news-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -26,19 +28,21 @@ export class ArticleListComponent implements OnInit {
   articles: News[];
   isMynews = false;
   articlesCount = 4;
-  myArticles: News[] = myArticles.slice(0, this.articlesCount);
+  myArticles: News[] = myArticles.slice(0, this.articlesCount); //and see onGetMyNews
   sourceChanel: string;
-  // newsapifilerrender: boolean = false;
-  // myapifilerrender: boolean = false;
+  newsapifilerrender: boolean = false;
+  myapifilerrender: boolean = false;
 
-  constructor(private apiService: WorldNewsApiService) {}
+  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private router: Router) {}
 
   ngOnInit() {
     if (!this.isMynews) {
     this.onGetWorldNews(this.chanels[0]);
     }
   }
-
+  reRoute(url) {
+    this.router.navigate([url])
+  }
   selectAttribute(data: string): void {
     this.name.emit(data);
   }
@@ -46,11 +50,11 @@ export class ArticleListComponent implements OnInit {
     this.isMynewsavailable.emit(data);
   }
   onGetWorldNews(chanel: string) {
-    // this.newsapifilerrender = true;
-    // this.myapifilerrender = false;
+    this.newsapifilerrender = true;
+    this.myapifilerrender = false;
     if (this.sourceChanel === chanel) {
       this.apiService.getWorldNews(chanel).subscribe(
-        (articles: any) => {
+        (articles: News[]) => {
           this.articles = articles.slice(0, this.articlesCount);
         },
         (error) => console.log(error)
@@ -59,7 +63,7 @@ export class ArticleListComponent implements OnInit {
       this.sourceChanel = chanel;
       this.selectAttribute(chanel);
       this.apiService.getWorldNews(chanel).subscribe(
-        (articles: any) => {
+        (articles: News[]) => {
           this.articlesCount = 4;
           this.articles = articles.slice(0, this.articlesCount);
         },
@@ -68,13 +72,22 @@ export class ArticleListComponent implements OnInit {
     }
   }
   onGetMyNews() {
+    // this.myNewsApi.getNews().subscribe(
+    //   (articles: News[]) => {
+    //     this.articles = articles.slice(0, this.articlesCount);
+    //   },
+    //   (error) => console.log(error)
+    // );
   this.myArticles = myArticles.slice(0, this.articlesCount);
-  console.log(this.myArticles);
 }
 
   onFilterChange(eve: any) {
     this.isMynews = !this.isMynews;
     this.isMyNewsAvailable(this.isMynews);
+    if(this.isMynews) {
+      this.onGetMyNews();
+      console.log('This is my news');
+    }
   }
 
   addArticles() {

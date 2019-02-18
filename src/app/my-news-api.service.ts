@@ -21,13 +21,13 @@ export class MyNewsApiService {
     return this.http
       .post<News>("api/news", article)
   }
-  deleteNews(id: any): Observable<{}>{
+  deleteArticle(id: any): Observable<{}>{
     const url = `api/news/${id}`;
     return this.http
       .delete(url)
   }
-  updateArticle(article: News): Observable<News> {
+  updateArticle(id: any, article: News): Observable<News> {
     return this.http
-      .put<News>(`api/news/${article._id}`, article)
+      .put<News>(`api/news/${id}`, article)
   }
 }

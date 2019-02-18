@@ -9,8 +9,8 @@
         <div>Date:{{article.publishedAt | date}}</div>
       </div>
       <div class="text-right">
-        <button class="btn btn-info" title="edit article" (click)="update(article._id)">Update</button>
-        <button class="btn btn-danger" title="delete article" (click)="delete(article._id)">Delete</button>
+       <button (click)="reRoute('create')" class="btn btn-info" title="edit article">Update</button>  <!--(click)="update(article._id, article)"-->
+        <button (click)="reRoute('news')" class="btn btn-danger" title="delete article" (click)="delete(article._id)">Delete</button>
       </div>
     </li>
   </ul>

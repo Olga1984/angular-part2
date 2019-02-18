@@ -1,34 +1,34 @@
-<form style="display: flex; justify-content: center" class="form container" (submit)="add(newsTitle.value); newsTitle.value=''">
-  <div style="margin: 5px">
-    <div class="form-group">
-      <label for="newsTitle">Heading</label>
-      <input #newsTitle class="form-control" id="newsTitle" placeholder="News Name">
-    </div>
-    <div class="form-group">
-      <label for="newsDescription">short Description</label>
-      <input #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
-    </div>
-    <div class="form-group">
-      <label for="newsContent">content</label>
-      <textarea class="form-control" id="newsContent" placeholder="News Description"></textarea>
-    </div>
+<form style="display: flex; justify-content: center" class="form container" newsTitle.value=''>
+<div style="margin: 5px">
+  <div class="form-group">
+    <label for="newsTitle">Heading</label>
+    <input #newsTitle class="form-control" id="newsTitle" placeholder="News Name">
   </div>
-  <div style="margin: 5px">
-    <div class="form-group">
-      <label for="inputImage">image</label>
-      <input class="form-control" id="inputImage" placeholder="image">
-    </div>
-
-    <div class="form-group">
-      <label for="inputDate">Date</label>
-      <input type="password" class="form-control" id="inputDate" placeholder="date">
-    </div>
-
-    <div class="form-group">
-      <label for="inputUrl">Source Url</label>
-      <input class="form-control" id="inputUrl" placeholder="Url">
-    </div>
-    <input routerLink="/" type="submit" value="Save" class="btn btn-success">
-    <input routerLink="/"type="submit" value="Cancel" class="btn btn-warning">
+  <div class="form-group">
+    <label for="newsDescription">short Description</label>
+    <input #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
   </div>
+  <div class="form-group">
+    <label for="newsContent">content</label>
+    <textarea class="form-control" id="newsContent" placeholder="News Description"></textarea>
+  </div>
+</div>
+<div style="margin: 5px">
+  <div class="form-group">
+    <label for="inputImage">image</label>
+    <input class="form-control" id="inputImage" placeholder="image">
+  </div>
+
+  <div class="form-group">
+    <label for="inputDate">Date</label>
+    <input type="password" class="form-control" id="inputDate" placeholder="date">
+  </div>
+
+  <div class="form-group">
+    <label for="inputUrl">Source Url</label>
+    <input class="form-control" id="inputUrl" placeholder="Url">
+  </div>
+  <input routerLink="/news" type="submit" value="Save" class="btn btn-success">
+  <input routerLink="/news "type="submit" value="Cancel" class="btn btn-warning">
+</div>
 </form>
