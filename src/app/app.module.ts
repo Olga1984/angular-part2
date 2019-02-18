@@ -12,6 +12,7 @@ import { MyNewsCheckboxComponent } from './my-news-checkbox/my-news-checkbox.com
 import { AddArticleButtonComponent } from './add-article-button/add-article-button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { NewsfilterPipe } from './newsfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ArticleCreateComponent } from './article-create/article-create.componen
     FilterComponent,
     MyNewsCheckboxComponent,
     AddArticleButtonComponent,
-    ArticleCreateComponent
+    ArticleCreateComponent,
+    NewsfilterPipe
   ],
   imports: [
     BrowserModule,

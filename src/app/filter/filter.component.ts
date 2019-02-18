@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { News} from '../news';
 
 @Component({
   selector: 'app-filter',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-
+  //@Input() articlestobefiltered: News[];
+  char: string;
   constructor() { }
 
   ngOnInit() {

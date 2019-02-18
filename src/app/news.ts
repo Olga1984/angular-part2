@@ -10,7 +10,7 @@ export interface News {
 export const myArticles: any[] = [{
   _id: '1',
   author: 'BBC News',
-  title: 'Deal reached to avert new US shutdown',
+  title: 'Aeal reached to avert new US shutdown',
   description: 'The tentative agreement on border security breaks a longstanding stalemate in Congress.',
   url: 'http://www.bbc.co.uk/news/world-us-canada-47207411',
   urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',
@@ -19,7 +19,7 @@ export const myArticles: any[] = [{
   {
     _id: '2',
     author: 'BBC News',
-    title: 'Deal reached to avert new US shutdown',
+    title: 'Beal reached to avert new US shutdown',
     description: 'The tentative agreement on border security breaks a longstanding stalemate in Congress.',
     url: 'http://www.bbc.co.uk/news/world-us-canada-47207411',
     urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',
@@ -28,7 +28,7 @@ export const myArticles: any[] = [{
   {
     _id: '3',
     author: 'BBC News',
-    title: 'Deal reached to avert new US shutdown',
+    title: 'Ceal reached to avert new US shutdown',
     description: 'The tentative agreement on border security breaks a longstanding stalemate in Congress.',
     url: 'http://www.bbc.co.uk/news/world-us-canada-47207411',
     urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',
@@ -46,7 +46,7 @@ export const myArticles: any[] = [{
   {
     _id: '5',
     author: 'BBC News',
-    title: 'Deal reached to avert new US shutdown',
+    title: 'Eeal reached to avert new US shutdown',
     description: 'The tentative agreement on border security breaks a longstanding stalemate in Congress.',
     url: 'http://www.bbc.co.uk/news/world-us-canada-47207411',
     urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',
@@ -55,7 +55,7 @@ export const myArticles: any[] = [{
   {
     _id: '6',
     author: 'BBC News',
-    title: 'Deal reached to avert new US shutdown',
+    title: 'Feal reached to avert new US shutdown',
     description: 'The tentative agreement on border security breaks a longstanding stalemate in Congress.',
     url: 'http://www.bbc.co.uk/news/world-us-canada-47207411',
     urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',

@@ -9,13 +9,17 @@ import {News} from '../news';
 export class ArticleComponent implements OnInit {
   @Input() articles: News[];
   @Input() isnews: boolean;
+  //@Input() isfilerrender: boolean;
+  char: string;
 
   constructor() { }
 
   ngOnInit() {
-    // console.log(this.isnews);
+    //console.log(this.isfilerrender);
   }
-
+  changeFilter(char: string) {
+    this.char = char;
+  }
   delete(article: News): void {
     console.log('delete');
     this.articles = this.articles.filter(h => h !== article);

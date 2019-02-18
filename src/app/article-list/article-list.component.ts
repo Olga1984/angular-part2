@@ -23,12 +23,13 @@ export class ArticleListComponent implements OnInit {
     'google-news',
     'Bad Request!'];
 
-  articles: any[] = [];
-  isMynews: boolean = false;
+  articles: News[];
+  isMynews = false;
   articlesCount = 4;
   myArticles: News[] = myArticles.slice(0, this.articlesCount);
   sourceChanel: string;
-  myChannel: string = 'myChannel';
+  // newsapifilerrender: boolean = false;
+  // myapifilerrender: boolean = false;
 
   constructor(private apiService: WorldNewsApiService) {}
 
@@ -45,6 +46,8 @@ export class ArticleListComponent implements OnInit {
     this.isMynewsavailable.emit(data);
   }
   onGetWorldNews(chanel: string) {
+    this.newsapifilerrender = true;
+    this.myapifilerrender = false;
     if (this.sourceChanel === chanel) {
       this.apiService.getWorldNews(chanel).subscribe(
         (articles: any) => {
@@ -65,7 +68,6 @@ export class ArticleListComponent implements OnInit {
     }
   }
   onGetMyNews() {
-  this.sourceChanel = this.myChannel;
   this.myArticles = myArticles.slice(0, this.articlesCount);
   console.log(this.myArticles);
 }

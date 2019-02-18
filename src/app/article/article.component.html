@@ -1,5 +1,7 @@
+<input  type="text" #newsInput maxlength="1">
+<button (click)="changeFilter(newsInput.value)">Filter</button>
 <div *ngIf="isnews" class="container ">
-<ul class="list-group" *ngFor="let article of articles">
+<ul class="list-group" *ngFor="let article of articles | newsfilter: char">
   <li class="list-group-item" style="margin: 5px 0; display: flex; justify-content: space-between; align-items: center">
     <div class="text-left" style="overflow: hidden;">
       <img [src]="article.urlToImage || article.title" style="height: 50px; float: left">
