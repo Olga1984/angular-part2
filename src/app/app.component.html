@@ -2,7 +2,6 @@
 <div id="container">
   <app-layout [sourcename]="name" [isMynews]="isMynewsavailable"></app-layout>
   <app-article-list (name)="hadleSourcename($event)" (isMynewsavailable)="hadleMyNews($event)"></app-article-list>
-  <app-article-edit ></app-article-edit>
 </div>
 <div id="content">
   <router-outlet></router-outlet>

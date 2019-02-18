@@ -7,6 +7,7 @@ import {ArticleCreateComponent} from './article-create/article-create.component'
 
 const routes: Routes = [
  // {path: 'news', component: ArticleListComponent},
+  {path: 'news/:id', component: ArticleEditComponent},
   {path: 'news/edit/:id', component: ArticleEditComponent},
   {path: 'news/create', component: ArticleCreateComponent},
 ];

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import { catchError } from 'rxjs/operators';
 import { News} from "./news";
-//import { HttpErrorHandler, HandleError } from '../http-rror-handler.service'
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +13,15 @@ export class MyNewsApiService {
     return this.http
       .get<News[]>("api/news")
   }
+  getArticle(id: any): Observable<News[]> {
+    return this.http
+      .get<News[]>(`api/news/${id}`)
+  }
   addArticle(article: News): Observable<News>{
     return this.http
       .post<News>("api/news", article)
   }
-  deleteNews(id: number): Observable<{}>{
+  deleteNews(id: any): Observable<{}>{
     const url = `api/news/${id}`;
     return this.http
       .delete(url)
