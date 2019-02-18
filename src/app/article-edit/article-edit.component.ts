@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {News, myArticles } from '../news';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute ,Params} from '@angular/router';
 import { MyNewsApiService } from '../my-news-api.service';
 
@@ -20,11 +19,11 @@ export class ArticleEditComponent implements OnInit {
   ngOnInit() {
   this.data.getArticle(this.articleId).subscribe(data => this.articleId = data)
   }
-  delete(article: News): void {
+  delete(id:string){
     console.log('delete');
   }
 
-  update(index) {
+  update(id:string) {
     console.log('update');
   }
 
