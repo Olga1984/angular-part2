@@ -3,6 +3,7 @@ import { WorldNewsApiService } from '../world-news-api.service';
 import { News, myArticles } from '../news';
 import { MyNewsApiService } from '../my-news-api.service';
 import { Router } from '@angular/router';
+import {MaintitlevalueService} from '../maintitlevalue.service';
 
 @Component({
   selector: 'app-article-list',
@@ -11,8 +12,6 @@ import { Router } from '@angular/router';
 })
 
 export class ArticleListComponent implements OnInit {
-  @Output() name: EventEmitter<any> = new EventEmitter();
-  @Output() isMynewsavailable: EventEmitter<any> = new EventEmitter();
 
   chanels: string[] = [
     'cnn',
@@ -28,12 +27,12 @@ export class ArticleListComponent implements OnInit {
   articles: News[];
   isMynews = false;
   articlesCount = 4;
-  myArticles: News[] = myArticles.slice(0, this.articlesCount); //and see onGetMyNews
+  myArticles: News[] = myArticles.slice(0, this.articlesCount); // and see onGetMyNews
   sourceChanel: string;
-  newsapifilerrender: boolean = false;
-  myapifilerrender: boolean = false;
+  newsapifilerrender = false;
+  myapifilerrender = false;
 
-  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private router: Router) {}
+  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: MaintitlevalueService, private router: Router) {}
 
   ngOnInit() {
     if (!this.isMynews) {
@@ -41,15 +40,12 @@ export class ArticleListComponent implements OnInit {
     }
   }
   reRoute(url) {
-    this.router.navigate([url])
+    this.router.navigate([url]);
   }
-  selectAttribute(data: string): void {
-    this.name.emit(data);
-  }
-  isMyNewsAvailable(data: boolean): void {
-    this.isMynewsavailable.emit(data);
-  }
+
   onGetWorldNews(chanel: string) {
+    this.mainTitleService.updatedTitleValue.emit(chanel);
+
     this.newsapifilerrender = true;
     this.myapifilerrender = false;
     if (this.sourceChanel === chanel) {
@@ -61,7 +57,7 @@ export class ArticleListComponent implements OnInit {
       );
     } else {
       this.sourceChanel = chanel;
-      this.selectAttribute(chanel);
+
       this.apiService.getWorldNews(chanel).subscribe(
         (articles: News[]) => {
           this.articlesCount = 4;
@@ -83,8 +79,9 @@ export class ArticleListComponent implements OnInit {
 
   onFilterChange(eve: any) {
     this.isMynews = !this.isMynews;
-    this.isMyNewsAvailable(this.isMynews);
-    if(this.isMynews) {
+    //this.mainTitleService.mychannelTitleShow(this.isMynews);
+    this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
+    if (this.isMynews) {
       this.onGetMyNews();
       console.log('This is my news');
     }

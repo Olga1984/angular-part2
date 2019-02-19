@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
+import {MaintitlevalueService} from '../maintitlevalue.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,20 +7,20 @@ import {Component, Input, OnInit, OnChanges} from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit, OnChanges {
-  // @Input() sourcename: string;
-  // @Input() isMynews: boolean;
-  sourcenameTitle: string;
-  constructor() { }
+  public mainTitle: string;
+  public isMyNews: boolean;
+
+  constructor(private mainTitleService: MaintitlevalueService) { }
 
   ngOnInit() {
-      this.sourcenameTitle = 'edit';
+    this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
+        this.mainTitle = newsApiTitle;
+    });
+    this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
+      this.isMyNews = isMyNews;
+      console.log(this.isMyNews, 'this.isMyNews');
+    });
   }
   ngOnChanges() {
-    // if (this.sourcename && !this.isMynews) {
-    //   this.sourcenameTitle = this.sourcename;
-    // } else {
-    //   this.sourcenameTitle = 'my news';
-    // }
   }
-
 }
