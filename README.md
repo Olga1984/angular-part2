@@ -1,3 +1,7 @@
+# see please
+
+https://olga1984.github.io/angular-part2/dist/angular-p2/
+
 # AngularP2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
