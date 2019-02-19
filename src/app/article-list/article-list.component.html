@@ -5,9 +5,9 @@
         <option  *ngFor="let i of chanels">{{i}}</option>
       </select>
     </div>
-    <form class="checkbox">
+    <div class="checkbox">
       <label><input type="checkbox" id="1" (change)="onFilterChange($event)"/>only created by me</label>
-    </form>
+    </div>
     <div class="addbutton">
       <button class="btn btn-info" (click)="reRoute('create')">Add article</button>
     </div>

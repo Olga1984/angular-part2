@@ -1,34 +1,49 @@
-<form style="display: flex; justify-content: center" class="form container" newsTitle.value=''>
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()" style="display: flex; justify-content: center" class="form container" newsTitle.value=''>
 <div style="margin: 5px">
   <div class="form-group">
-    <label for="newsTitle">Heading</label>
-    <input #newsTitle class="form-control" id="newsTitle" placeholder="News Name">
+    <label for="title">Heading
+    <input formControlName="title" #newsTitle class="form-control" id="title" placeholder="News Name" >
+      <div *ngIf="submitted && articleForm.controls.title.errors" class="error">
+        <div *ngIf="submitted && articleForm.controls.title.errors.required" class="text-danger">title is required</div>
+      </div>
+    </label>
   </div>
   <div class="form-group">
-    <label for="newsDescription">short Description</label>
-    <input #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
+    <label for="newsDescription">short Description
+    <input formControlName="description" #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
+      <div *ngIf="submitted && articleForm.controls.description.errors" class="error">
+        <div *ngIf="submitted && articleForm.controls.description.errors.required" class="text-danger">description is required</div>
+      </div>
+    </label>
   </div>
   <div class="form-group">
-    <label for="newsContent">content</label>
-    <textarea class="form-control" id="newsContent" placeholder="News Description"></textarea>
+    <label for="newsContent">content
+    <textarea formControlName="content" class="form-control" id="newsContent" placeholder="News Description"></textarea>
+      <div *ngIf="submitted && articleForm.controls.content.errors" class="warning">
+        <div *ngIf="submitted && articleForm.controls.content.errors.required" class="text-danger">content is required</div>
+      </div>
+    </label>
   </div>
 </div>
 <div style="margin: 5px">
   <div class="form-group">
-    <label for="inputImage">image</label>
+    <label for="inputImage">image
     <input class="form-control" id="inputImage" placeholder="image">
+    </label>
   </div>
 
   <div class="form-group">
-    <label for="inputDate">Date</label>
+    <label for="inputDate">Date
     <input type="password" class="form-control" id="inputDate" placeholder="date">
+    </label>
   </div>
 
   <div class="form-group">
-    <label for="inputUrl">Source Url</label>
+    <label for="inputUrl">Source Url
     <input class="form-control" id="inputUrl" placeholder="Url">
+    </label>
   </div>
-  <input routerLink="/news" type="submit" value="Save" class="btn btn-success">
-  <input routerLink="/news "type="submit" value="Cancel" class="btn btn-warning">
+  <input [disabled]="articleForm.invalid" routerLink="/news" type="submit" value="Save" class="btn btn-success">
+  <button routerLink="/news" class="btn btn-warning">Cancel</button>
 </div>
 </form>

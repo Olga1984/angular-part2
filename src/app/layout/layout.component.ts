@@ -6,21 +6,20 @@ import {Component, Input, OnInit, OnChanges} from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit, OnChanges {
-  @Input() sourcename: string;
-  @Input() isMynews: boolean;
+  // @Input() sourcename: string;
+  // @Input() isMynews: boolean;
   sourcenameTitle: string;
   constructor() { }
 
   ngOnInit() {
       this.sourcenameTitle = 'edit';
   }
-
   ngOnChanges() {
-    if (this.sourcename && !this.isMynews) {
-      this.sourcenameTitle = this.sourcename;
-    } else {
-      this.sourcenameTitle = 'my news';
-    }
+    // if (this.sourcename && !this.isMynews) {
+    //   this.sourcenameTitle = this.sourcename;
+    // } else {
+    //   this.sourcenameTitle = 'my news';
+    // }
   }
 
 }
