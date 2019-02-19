@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
-import { MyNewsCheckboxComponent } from './my-news-checkbox/my-news-checkbox.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleCreateComponent } from './article-create/article-create.component';
 import { NewsfilterPipe } from './newsfilter.pipe';
@@ -20,7 +19,6 @@ import { NewsfilterPipe } from './newsfilter.pipe';
     ArticleListComponent,
     ArticleComponent,
     ArticleEditComponent,
-    MyNewsCheckboxComponent,
     ArticleCreateComponent,
     NewsfilterPipe
   ],

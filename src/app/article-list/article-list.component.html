@@ -1,21 +1,20 @@
-<div >
-  <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
-    <div>
-      <select *ngIf="!isMynews" (change)="onGetWorldNews($event.target.value)">
-        <option  *ngFor="let i of chanels">{{i}}</option>
-      </select>
+<div class="container">
+    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="width: 300px;">
+            <select class="form-control" style="width: 300px; float: left;" *ngIf="!isMynews" (change)="onGetWorldNews($event.target.value)">
+                <option *ngFor="let i of chanels">{{i}}</option>
+            </select>
+        </div>
+        <div class="checkbox">
+            <label><input class="form-control" type="checkbox" id="1" (change)="onFilterChange($event)" />only created by me</label>
+        </div>
+        <div class="addbutton">
+            <button class="btn btn-info" (click)="reRoute('create')">Add article</button>
+        </div>
     </div>
-    <div class="checkbox">
-      <label><input type="checkbox" id="1" (change)="onFilterChange($event)"/>only created by me</label>
-    </div>
-    <div class="addbutton">
-      <button class="btn btn-info" (click)="reRoute('create')">Add article</button>
-    </div>
-  </div>
     <app-article *ngIf="!isMynews" [isMynews]="isMynews" [articles]="articles" [isRenderButtons]="isMynews"></app-article>
     <app-article *ngIf="isMynews" [isMynews]="isMynews" [articles]="myArticles" [isRenderButtons]="isMynews"></app-article>
-  <div style="display: flex; align-content: center; justify-content: center;" >
-    <button type="submit" class="btn btn-success" (click)="addArticles()">Load more</button>
-  </div>
+    <div style="display: flex; align-content: center; justify-content: center;">
+        <button type="submit" class="btn btn-success" (click)="addArticles()">Load more</button>
+    </div>
 </div>
-

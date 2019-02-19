@@ -1,16 +1,15 @@
 .layout {
-
   .container {
     margin: 20px 0;
-    .authbutton {
-      float: right;
+    display: flex;
+    justify-content: space-between;
+    .buttons {
     }
   }
-  .sourcename {
-    height: 50px;
-    background-color: lightgray;
-    text-align: center;
-    border: 1px solid grey;
-  }
 }
-
+.sourcename {
+  height: 50px;
+  background-color: lightgray;
+  text-align: center;
+  border: 1px solid grey;
+}

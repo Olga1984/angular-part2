@@ -15,7 +15,9 @@ export class ArticleCreateComponent implements OnInit {
     this.articleForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      image: ['', Validators.required],
+      date: ['', Validators.required]
     })
   }
   onSubmit() {
@@ -28,7 +30,4 @@ export class ArticleCreateComponent implements OnInit {
   ngOnInit() {
 
   }
-
-
-
 }

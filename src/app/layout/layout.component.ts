@@ -18,7 +18,6 @@ export class LayoutComponent implements OnInit, OnChanges {
     });
     this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
       this.isMyNews = isMyNews;
-      console.log(this.isMyNews, 'this.isMyNews');
     });
   }
   ngOnChanges() {

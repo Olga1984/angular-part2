@@ -1,20 +1,22 @@
-<input  type="text" #newsInput maxlength="1">
-<button (click)="changeFilter(newsInput.value)">Filter</button>
+<div class="container" style="overflow: hidden;">
+    <input class="form-control" style="width: 300px; float: left;" type="text" #newsInput maxlength="1" placeholder="Enter first title letter and click">
+    <button class="btn btn-info" (click)="changeFilter(newsInput.value)">Filter</button>
+</div>
 <div class="container ">
-<ul class="list-group" *ngFor="let article of articles | newsfilter: char">
-  <li class="list-group-item" style="margin: 5px 0; display: flex; justify-content: space-between; align-items: center">
-    <div class="text-left" style="overflow: hidden;">
-      <img [src]="article.urlToImage || article.title" style="height: 50px; float: left">
-      <h4>{{article.title | titlecase }}</h4>
-      <i>{{article.author | uppercase}}</i>
-      <p>{{article.description | lowercase}}</p>
-      <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>
-    </div>
-    <div *ngIf="isRenderButtons" class="text-right">
-      <button routerLink="news/edit/{{article._id}}" class="btn btn-info" title="edit article" (click)="update(article._id)">Update</button>
-      <button class="btn btn-danger" title="delete article" (click)="delete(article)">Delete</button>
-      <button (click)="reRoute('news/edit/1')">go to edit article</button>
-    </div>
-  </li>
-</ul>
+    <ul class="list-group" *ngFor="let article of articles | newsfilter: char">
+        <li class="list-group-item" style="margin: 5px 0; display: flex; justify-content: space-between; align-items: center">
+            <div class="text-left" style="overflow: hidden;">
+                <img [src]="article.urlToImage || article.title" style="height: 50px; float: left">
+                <h4>{{article.title | titlecase }}</h4>
+                <i>{{article.author | uppercase}}</i>
+                <p>{{article.description | lowercase}}</p>
+                <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>
+            </div>
+            <div *ngIf="isRenderButtons" class="text-right">
+                <button routerLink="news/edit/{{article._id}}" class="btn btn-info" title="edit article" (click)="update(article._id)">Update</button>
+                <button class="btn btn-danger" title="delete article" (click)="delete(article)">Delete</button>
+                <button (click)="reRoute('news/edit/1')">go to edit article</button>
+            </div>
+        </li>
+    </ul>
 </div>

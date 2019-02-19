@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { WorldNewsApiService } from '../world-news-api.service';
 import { News, myArticles } from '../news';
 import { MyNewsApiService } from '../my-news-api.service';
 import { Router } from '@angular/router';
-import {MaintitlevalueService} from '../maintitlevalue.service';
+import { MaintitlevalueService } from '../maintitlevalue.service';
 
 @Component({
   selector: 'app-article-list',
@@ -79,7 +79,6 @@ export class ArticleListComponent implements OnInit {
 
   onFilterChange(eve: any) {
     this.isMynews = !this.isMynews;
-    //this.mainTitleService.mychannelTitleShow(this.isMynews);
     this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
     if (this.isMynews) {
       this.onGetMyNews();

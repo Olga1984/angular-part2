@@ -1,14 +1,14 @@
-<div class="layout">
-<div>
-  <div class="container">
-    <label>
-      <input type="checkbox" name="remember"> Aggregator Logo
-    </label>
-    <button class="authbutton" type="submit">User login</button>
-    <button class="authbutton" type="submit">Log out</button>
-  </div>
+<div class="layout container">
+    <div class="container">
+        <label>
+            <input class="form-control" type="checkbox" name="remember"> Aggregator Logo
+        </label>
+        <div class="buttons">
+            <button class="btn btn-warning" type="submit">User login</button>
+            <button class="btn btn-info" type="submit">Log out</button>
+        </div>
+    </div>
 </div>
-  <h1 class="sourcename">
+<h1 class="sourcename">
     {{!isMyNews ? mainTitle: 'my channel'}}
-  </h1>
-</div>
+</h1>

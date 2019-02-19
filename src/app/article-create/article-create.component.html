@@ -1,49 +1,55 @@
 <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" style="display: flex; justify-content: center" class="form container" newsTitle.value=''>
-<div style="margin: 5px">
-  <div class="form-group">
-    <label for="title">Heading
-    <input formControlName="title" #newsTitle class="form-control" id="title" placeholder="News Name" >
-      <div *ngIf="submitted && articleForm.controls.title.errors" class="error">
-        <div *ngIf="submitted && articleForm.controls.title.errors.required" class="text-danger">title is required</div>
-      </div>
-    </label>
-  </div>
-  <div class="form-group">
-    <label for="newsDescription">short Description
-    <input formControlName="description" #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
-      <div *ngIf="submitted && articleForm.controls.description.errors" class="error">
-        <div *ngIf="submitted && articleForm.controls.description.errors.required" class="text-danger">description is required</div>
-      </div>
-    </label>
-  </div>
-  <div class="form-group">
-    <label for="newsContent">content
-    <textarea formControlName="content" class="form-control" id="newsContent" placeholder="News Description"></textarea>
-      <div *ngIf="submitted && articleForm.controls.content.errors" class="warning">
-        <div *ngIf="submitted && articleForm.controls.content.errors.required" class="text-danger">content is required</div>
-      </div>
-    </label>
-  </div>
-</div>
-<div style="margin: 5px">
-  <div class="form-group">
-    <label for="inputImage">image
-    <input class="form-control" id="inputImage" placeholder="image">
-    </label>
-  </div>
+    <div style="margin: 5px">
+        <div class="form-group">
+            <label for="title">Heading
+                <input formControlName="title" #newsTitle class="form-control" id="title" placeholder="News Name">
+                <div *ngIf="submitted && articleForm.controls.title.errors" class="error">
+                    <div *ngIf="submitted && articleForm.controls.title.errors.required" class="text-danger">title is required</div>
+                </div>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="newsDescription">short Description
+                <input formControlName="description" #newsDescription class="form-control" id="newsDescription" placeholder="News Description">
+                <div *ngIf="submitted && articleForm.controls.description.errors" class="error">
+                    <div *ngIf="submitted && articleForm.controls.description.errors.required" class="text-danger">description is required</div>
+                </div>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="newsContent">content
+                <textarea formControlName="content" class="form-control" id="newsContent" placeholder="News Description"></textarea>
+                <div *ngIf="submitted && articleForm.controls.content.errors" class="warning">
+                    <div *ngIf="submitted && articleForm.controls.content.errors.required" class="text-danger">content is required</div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div style="margin: 5px">
+        <div class="form-group">
+            <label for="inputImage">image
+                <input formControlName="image" class="form-control" id="inputImage" placeholder="image">
+                <div *ngIf="submitted && articleForm.controls.image.errors" class="warning">
+                    <div *ngIf="submitted && articleForm.controls.image.errors.required" class="text-danger">image is required</div>
+                </div>
+            </label>
+        </div>
 
-  <div class="form-group">
-    <label for="inputDate">Date
-    <input type="password" class="form-control" id="inputDate" placeholder="date">
-    </label>
-  </div>
+        <div class="form-group">
+            <label for="inputDate">Date
+                <input formControlName="date" type="password" class="form-control" id="inputDate" placeholder="date">
+                <div *ngIf="submitted && articleForm.controls.date.errors" class="warning">
+                    <div *ngIf="submitted && articleForm.controls.date.errors.required" class="text-danger">date is required</div>
+                </div>
+            </label>
+        </div>
 
-  <div class="form-group">
-    <label for="inputUrl">Source Url
-    <input class="form-control" id="inputUrl" placeholder="Url">
-    </label>
-  </div>
-  <input [disabled]="articleForm.invalid" routerLink="/news" type="submit" value="Save" class="btn btn-success">
-  <button routerLink="/news" class="btn btn-warning">Cancel</button>
-</div>
+        <div class="form-group">
+            <label for="inputUrl">Source Url
+                <input class="form-control" id="inputUrl" placeholder="Url">
+            </label>
+        </div>
+        <input [disabled]="articleForm.invalid" routerLink="/news" type="submit" value="Save" class="btn btn-success">
+        <button routerLink="/news" class="btn btn-warning">Cancel</button>
+    </div>
 </form>
