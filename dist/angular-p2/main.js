@@ -74,7 +74,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\">\n <app-layout></app-layout>  <!--[sourcename]=\"name\" [isMynews]=\"isMynewsavailable\"-->\n  <!--<app-article-list (name)=\"hadleSourcename($event)\" (isMynewsavailable)=\"hadleMyNews($event)\"></app-article-list>-->\n</div>\n<div id=\"content\">\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div id=\"container\">\n    <app-layout></app-layout>\n</div>\n<div id=\"content\">\n    <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -106,20 +106,13 @@ __webpack_require__.r(__webpack_exports__);
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
-    AppComponent.prototype.hadleSourcename = function (event) {
-        this.name = event;
-        //console.log(this.name);
-    };
-    AppComponent.prototype.hadleMyNews = function (event) {
-        this.isMynewsavailable = event;
-        //console.log(this.isMynewsavailable);
-    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], AppComponent);
     return AppComponent;
 }());
@@ -148,11 +141,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _article_list_article_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./article-list/article-list.component */ "./src/app/article-list/article-list.component.ts");
 /* harmony import */ var _article_article_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./article/article.component */ "./src/app/article/article.component.ts");
 /* harmony import */ var _article_edit_article_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./article-edit/article-edit.component */ "./src/app/article-edit/article-edit.component.ts");
-/* harmony import */ var _my_news_checkbox_my_news_checkbox_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./my-news-checkbox/my-news-checkbox.component */ "./src/app/my-news-checkbox/my-news-checkbox.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _article_create_article_create_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./article-create/article-create.component */ "./src/app/article-create/article-create.component.ts");
-/* harmony import */ var _newsfilter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./newsfilter.pipe */ "./src/app/newsfilter.pipe.ts");
-
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _article_create_article_create_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./article-create/article-create.component */ "./src/app/article-create/article-create.component.ts");
+/* harmony import */ var _newsfilter_pipe__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./newsfilter.pipe */ "./src/app/newsfilter.pipe.ts");
 
 
 
@@ -177,14 +168,13 @@ var AppModule = /** @class */ (function () {
                 _article_list_article_list_component__WEBPACK_IMPORTED_MODULE_7__["ArticleListComponent"],
                 _article_article_component__WEBPACK_IMPORTED_MODULE_8__["ArticleComponent"],
                 _article_edit_article_edit_component__WEBPACK_IMPORTED_MODULE_9__["ArticleEditComponent"],
-                _my_news_checkbox_my_news_checkbox_component__WEBPACK_IMPORTED_MODULE_10__["MyNewsCheckboxComponent"],
-                _article_create_article_create_component__WEBPACK_IMPORTED_MODULE_12__["ArticleCreateComponent"],
-                _newsfilter_pipe__WEBPACK_IMPORTED_MODULE_13__["NewsfilterPipe"]
+                _article_create_article_create_component__WEBPACK_IMPORTED_MODULE_11__["ArticleCreateComponent"],
+                _newsfilter_pipe__WEBPACK_IMPORTED_MODULE_12__["NewsfilterPipe"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]
             ],
             providers: [],
@@ -205,7 +195,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n<div style=\"margin: 5px\">\n  <div class=\"form-group\">\n    <label for=\"title\">Heading\n    <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\" >\n      <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n        <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n      </div>\n    </label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"newsDescription\">short Description\n    <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n      <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n        <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n      </div>\n    </label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"newsContent\">content\n    <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n      <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n        <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n      </div>\n    </label>\n  </div>\n</div>\n<div style=\"margin: 5px\">\n  <div class=\"form-group\">\n    <label for=\"inputImage\">image\n    <input class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n    </label>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"inputDate\">Date\n    <input type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n    </label>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"inputUrl\">Source Url\n    <input class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n    </label>\n  </div>\n  <input [disabled]=\"articleForm.invalid\" routerLink=\"/news\" type=\"submit\" value=\"Save\" class=\"btn btn-success\">\n  <button routerLink=\"/news\" class=\"btn btn-warning\">Cancel</button>\n</div>\n</form>\n"
+module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"title\">Heading\n                <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\">\n                <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsDescription\">short Description\n                <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n                <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsContent\">content\n                <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n                <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n                </div>\n            </label>\n        </div>\n    </div>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"inputImage\">image\n                <input formControlName=\"image\" class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n                <div *ngIf=\"submitted && articleForm.controls.image.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.image.errors.required\" class=\"text-danger\">image is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputDate\">Date\n                <input formControlName=\"date\" type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n                <div *ngIf=\"submitted && articleForm.controls.date.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.date.errors.required\" class=\"text-danger\">date is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputUrl\">Source Url\n                <input class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n            </label>\n        </div>\n        <input [disabled]=\"articleForm.invalid\" routerLink=\"/news\" type=\"submit\" value=\"Save\" class=\"btn btn-success\">\n        <button routerLink=\"/news\" class=\"btn btn-warning\">Cancel</button>\n    </div>\n</form>\n"
 
 /***/ }),
 
@@ -244,7 +234,9 @@ var ArticleCreateComponent = /** @class */ (function () {
         this.articleForm = this.formBuilder.group({
             title: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             description: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            content: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            content: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            image: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            date: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     }
     ArticleCreateComponent.prototype.onSubmit = function () {
@@ -278,7 +270,7 @@ var ArticleCreateComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"container \">\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n      <div class=\"text-left\" style=\"overflow: hidden;\">\n        <img [src]=\"'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png'\" style=\"height: 50px; float: left\">\n        <h4>{{article.title | titlecase }}</h4>\n        <i>{{article.author | uppercase}}</i>\n        <p>{{article.description | lowercase}}</p>\n        <div>Date:{{article.publishedAt | date}}</div>\n      </div>\n      <div class=\"text-right\">\n       <button (click)=\"reRoute('create')\" class=\"btn btn-info\" title=\"edit article\">Update</button>  <!--(click)=\"update(article._id, article)\"-->\n        <button (click)=\"reRoute('news')\" class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article._id)\">Delete</button>\n      </div>\n    </li>\n  </ul>\n</div>\n"
+module.exports = "<div class=\"container \">\n    <ul class=\"list-group\">\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n            <div class=\"text-left\" style=\"overflow: hidden;\">\n                <img [src]=\"'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png'\" style=\"height: 50px; float: left\">\n                <h4>{{article.title | titlecase }}</h4>\n                <i>{{article.author | uppercase}}</i>\n                <p>{{article.description | lowercase}}</p>\n                <div>Date:{{article.publishedAt | date}}</div>\n            </div>\n            <div class=\"text-right\">\n                <button (click)=\"reRoute('create')\" class=\"btn btn-info\" title=\"edit article\">Update</button>\n                <!--(click)=\"update(article._id, article)\"-->\n                <button (click)=\"reRoute('news')\" class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article._id)\">Delete</button>\n            </div>\n        </li>\n    </ul>\n</div>\n"
 
 /***/ }),
 
@@ -362,7 +354,7 @@ var ArticleEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div >\r\n  <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\r\n    <div>\r\n      <select *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\r\n        <option  *ngFor=\"let i of chanels\">{{i}}</option>\r\n      </select>\r\n    </div>\r\n    <div class=\"checkbox\">\r\n      <label><input type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\"/>only created by me</label>\r\n    </div>\r\n    <div class=\"addbutton\">\r\n      <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\r\n    </div>\r\n  </div>\r\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n  <div style=\"display: flex; align-content: center; justify-content: center;\" >\r\n    <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n    <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\r\n        <div style=\"width: 300px;\">\r\n            <select class=\"form-control\" style=\"width: 300px; float: left;\" *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\r\n                <option *ngFor=\"let i of chanels\">{{i}}</option>\r\n            </select>\r\n        </div>\r\n        <div class=\"checkbox\">\r\n            <label><input class=\"form-control\" type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\" />only created by me</label>\r\n        </div>\r\n        <div class=\"addbutton\">\r\n            <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\r\n        </div>\r\n    </div>\r\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <div style=\"display: flex; align-content: center; justify-content: center;\">\r\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -461,7 +453,6 @@ var ArticleListComponent = /** @class */ (function () {
     };
     ArticleListComponent.prototype.onFilterChange = function (eve) {
         this.isMynews = !this.isMynews;
-        //this.mainTitleService.mychannelTitleShow(this.isMynews);
         this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
         if (this.isMynews) {
             this.onGetMyNews();
@@ -499,7 +490,7 @@ var ArticleListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input  type=\"text\" #newsInput maxlength=\"1\">\r\n<button (click)=\"changeFilter(newsInput.value)\">Filter</button>\r\n<div class=\"container \">\r\n<ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\r\n  <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\r\n    <div class=\"text-left\" style=\"overflow: hidden;\">\r\n      <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\r\n      <h4>{{article.title | titlecase }}</h4>\r\n      <i>{{article.author | uppercase}}</i>\r\n      <p>{{article.description | lowercase}}</p>\r\n      <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>\r\n    </div>\r\n    <div *ngIf=\"isRenderButtons\" class=\"text-right\">\r\n      <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\r\n      <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\r\n      <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\r\n    </div>\r\n  </li>\r\n</ul>\r\n</div>\r\n"
+module.exports = "<div class=\"container\" style=\"overflow: hidden;\">\r\n    <input class=\"form-control\" style=\"width: 300px; float: left;\" type=\"text\" #newsInput maxlength=\"1\" placeholder=\"Enter first title letter and click\">\r\n    <button class=\"btn btn-info\" (click)=\"changeFilter(newsInput.value)\">Filter</button>\r\n</div>\r\n<div class=\"container \">\r\n    <ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\r\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\r\n            <div class=\"text-left\" style=\"overflow: hidden;\">\r\n                <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\r\n                <h4>{{article.title | titlecase }}</h4>\r\n                <i>{{article.author | uppercase}}</i>\r\n                <p>{{article.description | lowercase}}</p>\r\n                <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>\r\n            </div>\r\n            <div *ngIf=\"isRenderButtons\" class=\"text-right\">\r\n                <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\r\n                <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\r\n                <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -598,7 +589,7 @@ var ArticleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout\">\r\n<div>\r\n  <div class=\"container\">\r\n    <label>\r\n      <input type=\"checkbox\" name=\"remember\"> Aggregator Logo\r\n    </label>\r\n    <button class=\"authbutton\" type=\"submit\">User login</button>\r\n    <button class=\"authbutton\" type=\"submit\">Log out</button>\r\n  </div>\r\n</div>\r\n  <h1 class=\"sourcename\">\r\n    {{!isMyNews ? mainTitle: 'my channel'}}\r\n  </h1>\r\n</div>\r\n"
+module.exports = "<div class=\"layout container\">\r\n    <div class=\"container\">\r\n        <label>\r\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\r\n        </label>\r\n        <div class=\"buttons\">\r\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\r\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\r\n        </div>\r\n    </div>\r\n</div>\r\n<h1 class=\"sourcename\">\r\n    {{!isMyNews ? mainTitle: 'my channel'}}\r\n</h1>\r\n"
 
 /***/ }),
 
@@ -609,7 +600,7 @@ module.exports = "<div class=\"layout\">\r\n<div>\r\n  <div class=\"container\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".layout .container {\n  margin: 20px 0; }\n  .layout .container .authbutton {\n    float: right; }\n  .layout .sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L0M6XFxVc2Vyc1xcT0xHQVxcRGVza3RvcFxcYW5ndWxhci1wYXJ0Mi9zcmNcXGFwcFxcbGF5b3V0XFxsYXlvdXQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFHSSxjQUFjLEVBQUE7RUFIbEI7SUFLTSxZQUFZLEVBQUE7RUFMbEI7RUFTSSxZQUFZO0VBQ1osMkJBQTJCO0VBQzNCLGtCQUFrQjtFQUNsQixzQkFBc0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9sYXlvdXQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGF5b3V0IHtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBtYXJnaW46IDIwcHggMDtcclxuICAgIC5hdXRoYnV0dG9uIHtcclxuICAgICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgfVxyXG4gIH1cclxuICAuc291cmNlbmFtZSB7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCBncmV5O1xyXG4gIH1cclxufVxyXG5cclxuIl19 */"
+module.exports = ".layout .container {\n  margin: 20px 0;\n  display: flex;\n  justify-content: space-between; }\n\n.sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L0M6XFxVc2Vyc1xcT0xHQVxcRGVza3RvcFxcYW5ndWxhci1wYXJ0Mi9zcmNcXGFwcFxcbGF5b3V0XFxsYXlvdXQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxjQUFjO0VBQ2QsYUFBYTtFQUNiLDhCQUE4QixFQUFBOztBQUtsQztFQUNFLFlBQVk7RUFDWiwyQkFBMkI7RUFDM0Isa0JBQWtCO0VBQ2xCLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGF5b3V0L2xheW91dC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sYXlvdXQge1xyXG4gIC5jb250YWluZXIge1xyXG4gICAgbWFyZ2luOiAyMHB4IDA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgLmJ1dHRvbnMge1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG4uc291cmNlbmFtZSB7XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -640,7 +631,6 @@ var LayoutComponent = /** @class */ (function () {
         });
         this.mainTitleService.isMyNewsAvailable.subscribe(function (isMyNews) {
             _this.isMyNews = isMyNews;
-            console.log(_this.isMyNews, 'this.isMyNews');
         });
     };
     LayoutComponent.prototype.ngOnChanges = function () {
@@ -746,62 +736,6 @@ var MyNewsApiService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], MyNewsApiService);
     return MyNewsApiService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/my-news-checkbox/my-news-checkbox.component.html":
-/*!******************************************************************!*\
-  !*** ./src/app/my-news-checkbox/my-news-checkbox.component.html ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  my-news-checkbox works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/my-news-checkbox/my-news-checkbox.component.scss":
-/*!******************************************************************!*\
-  !*** ./src/app/my-news-checkbox/my-news-checkbox.component.scss ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL215LW5ld3MtY2hlY2tib3gvbXktbmV3cy1jaGVja2JveC5jb21wb25lbnQuc2NzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/my-news-checkbox/my-news-checkbox.component.ts":
-/*!****************************************************************!*\
-  !*** ./src/app/my-news-checkbox/my-news-checkbox.component.ts ***!
-  \****************************************************************/
-/*! exports provided: MyNewsCheckboxComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyNewsCheckboxComponent", function() { return MyNewsCheckboxComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var MyNewsCheckboxComponent = /** @class */ (function () {
-    function MyNewsCheckboxComponent() {
-    }
-    MyNewsCheckboxComponent.prototype.ngOnInit = function () {
-    };
-    MyNewsCheckboxComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-my-news-checkbox',
-            template: __webpack_require__(/*! ./my-news-checkbox.component.html */ "./src/app/my-news-checkbox/my-news-checkbox.component.html"),
-            styles: [__webpack_require__(/*! ./my-news-checkbox.component.scss */ "./src/app/my-news-checkbox/my-news-checkbox.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], MyNewsCheckboxComponent);
-    return MyNewsCheckboxComponent;
 }());
 
 
