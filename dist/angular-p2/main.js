@@ -362,7 +362,7 @@ var ArticleEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div >\n  <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\n    <div>\n      <select *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\n        <option  *ngFor=\"let i of chanels\">{{i}}</option>\n      </select>\n    </div>\n    <div class=\"checkbox\">\n      <label><input type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\"/>only created by me</label>\n    </div>\n    <div class=\"addbutton\">\n      <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\n    </div>\n  </div>\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\n  <div style=\"display: flex; align-content: center; justify-content: center;\" >\n    <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\n  </div>\n</div>\n\n"
+module.exports = "<div >\r\n  <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\r\n    <div>\r\n      <select *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\r\n        <option  *ngFor=\"let i of chanels\">{{i}}</option>\r\n      </select>\r\n    </div>\r\n    <div class=\"checkbox\">\r\n      <label><input type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\"/>only created by me</label>\r\n    </div>\r\n    <div class=\"addbutton\">\r\n      <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\r\n    </div>\r\n  </div>\r\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n  <div style=\"display: flex; align-content: center; justify-content: center;\" >\r\n    <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -499,7 +499,7 @@ var ArticleListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input  type=\"text\" #newsInput maxlength=\"1\">\n<button (click)=\"changeFilter(newsInput.value)\">Filter</button>\n<div class=\"container \">\n<ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\n  <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n    <div class=\"text-left\" style=\"overflow: hidden;\">\n      <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\n      <h4>{{article.title | titlecase }}</h4>\n      <i>{{article.author | uppercase}}</i>\n      <p>{{article.description | lowercase}}</p>\n      <div>Date:{{article.publishedAt | date}}</div>\n    </div>\n    <div *ngIf=\"isRenderButtons\" class=\"text-right\">\n      <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\n      <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\n      <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\n    </div>\n  </li>\n</ul>\n</div>\n"
+module.exports = "<input  type=\"text\" #newsInput maxlength=\"1\">\r\n<button (click)=\"changeFilter(newsInput.value)\">Filter</button>\r\n<div class=\"container \">\r\n<ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\r\n  <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\r\n    <div class=\"text-left\" style=\"overflow: hidden;\">\r\n      <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\r\n      <h4>{{article.title | titlecase }}</h4>\r\n      <i>{{article.author | uppercase}}</i>\r\n      <p>{{article.description | lowercase}}</p>\r\n      <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>\r\n    </div>\r\n    <div *ngIf=\"isRenderButtons\" class=\"text-right\">\r\n      <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\r\n      <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\r\n      <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\r\n    </div>\r\n  </li>\r\n</ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -598,7 +598,7 @@ var ArticleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout\">\n<div>\n  <div class=\"container\">\n    <label>\n      <input type=\"checkbox\" name=\"remember\"> Aggregator Logo\n    </label>\n    <button class=\"authbutton\" type=\"submit\">User login</button>\n    <button class=\"authbutton\" type=\"submit\">Log out</button>\n  </div>\n</div>\n  <h1 class=\"sourcename\">\n    {{!isMyNews ? mainTitle: 'my channel'}}\n  </h1>\n</div>\n"
+module.exports = "<div class=\"layout\">\r\n<div>\r\n  <div class=\"container\">\r\n    <label>\r\n      <input type=\"checkbox\" name=\"remember\"> Aggregator Logo\r\n    </label>\r\n    <button class=\"authbutton\" type=\"submit\">User login</button>\r\n    <button class=\"authbutton\" type=\"submit\">Log out</button>\r\n  </div>\r\n</div>\r\n  <h1 class=\"sourcename\">\r\n    {{!isMyNews ? mainTitle: 'my channel'}}\r\n  </h1>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -609,7 +609,7 @@ module.exports = "<div class=\"layout\">\n<div>\n  <div class=\"container\">\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".layout .container {\n  margin: 20px 0; }\n  .layout .container .authbutton {\n    float: right; }\n  .layout .sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92b2xoYV9raXJleWV2YS9EZXNrdG9wL2FuZ3VsYXItcGFydDIvc3JjL2FwcC9sYXlvdXQvbGF5b3V0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBR0ksY0FBYyxFQUFBO0VBSGxCO0lBS00sWUFBWSxFQUFBO0VBTGxCO0VBU0ksWUFBWTtFQUNaLDJCQUEyQjtFQUMzQixrQkFBa0I7RUFDbEIsc0JBQXNCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvbGF5b3V0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxheW91dCB7XG5cbiAgLmNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAyMHB4IDA7XG4gICAgLmF1dGhidXR0b24ge1xuICAgICAgZmxvYXQ6IHJpZ2h0O1xuICAgIH1cbiAgfVxuICAuc291cmNlbmFtZSB7XG4gICAgaGVpZ2h0OiA1MHB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcbiAgfVxufVxuXG4iXX0= */"
+module.exports = ".layout .container {\n  margin: 20px 0; }\n  .layout .container .authbutton {\n    float: right; }\n  .layout .sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L0M6XFxVc2Vyc1xcT0xHQVxcRGVza3RvcFxcYW5ndWxhci1wYXJ0Mi9zcmNcXGFwcFxcbGF5b3V0XFxsYXlvdXQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFHSSxjQUFjLEVBQUE7RUFIbEI7SUFLTSxZQUFZLEVBQUE7RUFMbEI7RUFTSSxZQUFZO0VBQ1osMkJBQTJCO0VBQzNCLGtCQUFrQjtFQUNsQixzQkFBc0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9sYXlvdXQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGF5b3V0IHtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBtYXJnaW46IDIwcHggMDtcclxuICAgIC5hdXRoYnV0dG9uIHtcclxuICAgICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgfVxyXG4gIH1cclxuICAuc291cmNlbmFtZSB7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCBncmV5O1xyXG4gIH1cclxufVxyXG5cclxuIl19 */"
 
 /***/ }),
 
@@ -1038,7 +1038,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/volha_kireyeva/Desktop/angular-part2/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\OLGA\Desktop\angular-part2\src\main.ts */"./src/main.ts");
 
 
 /***/ })
