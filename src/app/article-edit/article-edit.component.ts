@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { MyNewsApiService } from '../my-news-api.service';
 import { News } from '../news';
+import {MainTitleValueService} from "../main-title-value.service";
 
 @Component({
   selector: 'app-article-edit',
@@ -9,6 +10,8 @@ import { News } from '../news';
   styleUrls: ['./article-edit.component.scss']
 })
 export class ArticleEditComponent implements OnInit {
+  isCreatePage: boolean;
+
   articleId: any;
   article: object = {
     _id: '1',
@@ -20,19 +23,22 @@ export class ArticleEditComponent implements OnInit {
     publishedAt: '2019-02-12T02:06:04Z'
   };
 
-  constructor(private route: ActivatedRoute, private data: MyNewsApiService, private router: Router) {
-    this.route.params.subscribe((params: Params)=>{
-      this.articleId = params['id'];
-    })
+  constructor(private route: ActivatedRoute, private data: MyNewsApiService, private mainTitleService: MainTitleValueService, private router: Router) {
+    this.route.params.subscribe((params: Params) => {
+      this.articleId = params.id;
+    });
   }
 
   ngOnInit() {
-  //this.data.getArticle(this.article).subscribe(data => this.articleId = data);
+  // this.data.getArticle(this.article).subscribe(data => this.articleId = data);
   }
-  reRoute(url) {
-    this.router.navigate([url])
+  reRoute(url: string, IscreatePage: boolean) {
+    this.isCreatePage = IscreatePage;
+    this.router.navigate([url]);
+    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+
   }
-  delete(id:string){
+  delete(id: string) {
     console.log('delete');
    // this.data.deleteArticle(id).subscribe(data => id = data);
   }

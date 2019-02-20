@@ -310,7 +310,7 @@ var ArticleCreateComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container \">\n    <ul class=\"list-group\">\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n            <div class=\"text-left\" style=\"overflow: hidden;\">\n                <img [src]=\"'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png'\" style=\"height: 50px; float: left\">\n                <h4>{{article.title | titlecase }}</h4>\n                <i>{{article.author | uppercase}}</i>\n                <p>{{article.description | lowercase}}</p>\n                <div>Date:{{article.publishedAt | date}}</div>\n            </div>\n            <div class=\"text-right\">\n                <button (click)=\"reRoute('create')\" class=\"btn btn-info\" title=\"edit article\">Update</button>\n                <!--(click)=\"update(article._id, article)\"-->\n                <button (click)=\"reRoute('news')\" class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article._id)\">Delete</button>\n            </div>\n        </li>\n    </ul>\n</div>\n"
+module.exports = "<div class=\"container \">\n    <ul class=\"list-group\">\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n            <div class=\"text-left\" style=\"overflow: hidden;\">\n                <img [src]=\"'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png'\" style=\"height: 50px; float: left\">\n                <h4>{{article.title | titlecase }}</h4>\n                <i>{{article.author | uppercase}}</i>\n                <p>{{article.description | lowercase}}</p>\n                <div>Date:{{article.publishedAt | date}}</div>\n            </div>\n            <div class=\"text-right\">\n                <button (click)=\"reRoute('create', true)\" class=\"btn btn-info\" title=\"edit article\">Edit</button>\n                <!--(click)=\"update(article._id, article)\"-->\n                <button (click)=\"reRoute('news', false)\" class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article._id)\">Delete</button>\n            </div>\n        </li>\n    </ul>\n</div>\n"
 
 /***/ }),
 
@@ -339,15 +339,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _my_news_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../my-news-api.service */ "./src/app/my-news-api.service.ts");
+/* harmony import */ var _main_title_value_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../main-title-value.service */ "./src/app/main-title-value.service.ts");
+
 
 
 
 
 var ArticleEditComponent = /** @class */ (function () {
-    function ArticleEditComponent(route, data, router) {
+    function ArticleEditComponent(route, data, mainTitleService, router) {
         var _this = this;
         this.route = route;
         this.data = data;
+        this.mainTitleService = mainTitleService;
         this.router = router;
         this.article = {
             _id: '1',
@@ -359,14 +362,16 @@ var ArticleEditComponent = /** @class */ (function () {
             publishedAt: '2019-02-12T02:06:04Z'
         };
         this.route.params.subscribe(function (params) {
-            _this.articleId = params['id'];
+            _this.articleId = params.id;
         });
     }
     ArticleEditComponent.prototype.ngOnInit = function () {
-        //this.data.getArticle(this.article).subscribe(data => this.articleId = data);
+        // this.data.getArticle(this.article).subscribe(data => this.articleId = data);
     };
-    ArticleEditComponent.prototype.reRoute = function (url) {
+    ArticleEditComponent.prototype.reRoute = function (url, IscreatePage) {
+        this.isCreatePage = IscreatePage;
         this.router.navigate([url]);
+        this.mainTitleService.isCreatePage.emit(this.isCreatePage);
     };
     ArticleEditComponent.prototype.delete = function (id) {
         console.log('delete');
@@ -378,7 +383,7 @@ var ArticleEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./article-edit.component.html */ "./src/app/article-edit/article-edit.component.html"),
             styles: [__webpack_require__(/*! ./article-edit.component.scss */ "./src/app/article-edit/article-edit.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _my_news_api_service__WEBPACK_IMPORTED_MODULE_3__["MyNewsApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _my_news_api_service__WEBPACK_IMPORTED_MODULE_3__["MyNewsApiService"], _main_title_value_service__WEBPACK_IMPORTED_MODULE_4__["MainTitleValueService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ArticleEditComponent);
     return ArticleEditComponent;
 }());
@@ -632,7 +637,7 @@ var ArticleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout container\">\n    <div class=\"container\">\n        <label>\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\n        </label>\n        <div class=\"buttons\">\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\n        </div>\n    </div>\n</div>\n<h1 class=\"sourcename\">\n    {{ isCreatePage ? 'create': !isMyNews ? mainTitle : 'my channel'}}\n</h1>\n<!--<h1 class=\"sourcename\">-->\n  <!--{{ isCreatePage ? 'create': 'channe-cannel'}}-->\n<!--</h1>-->\n"
+module.exports = "<div class=\"layout container\">\n    <div class=\"container\">\n        <label>\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\n        </label>\n        <div class=\"buttons\">\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\n        </div>\n    </div>\n</div>\n<h1 class=\"sourcename\">\n    {{ isCreatePage ? 'edit': !isMyNews ? mainTitle : 'my channel'}}\n</h1>\n"
 
 /***/ }),
 

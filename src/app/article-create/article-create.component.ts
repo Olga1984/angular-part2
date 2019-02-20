@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MainTitleValueService} from "../main-title-value.service";
-import {Router} from "@angular/router";
+import {MainTitleValueService} from '../main-title-value.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-article-create',
