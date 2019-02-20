@@ -31,6 +31,7 @@ export class ArticleListComponent implements OnInit {
   sourceChanel: string;
   newsapifilerrender = false;
   myapifilerrender = false;
+  isCreatePage = false;
 
   constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: MainTitleValueService, private router: Router) {}
 
@@ -39,7 +40,9 @@ export class ArticleListComponent implements OnInit {
     this.onGetWorldNews(this.chanels[0]);
     }
   }
-  reRoute(url) {
+  reRouteToCreatePage(url) {
+    this.isCreatePage = true;
+    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
     this.router.navigate([url]);
   }
 

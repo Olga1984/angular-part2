@@ -8,7 +8,7 @@ export class MainTitleValueService {
   public updatedTitleValue: EventEmitter<string> = new EventEmitter();
   public isMyNewsAvailable: EventEmitter<boolean> = new EventEmitter();
   public isCreatePage: EventEmitter<boolean> = new EventEmitter();
-  public isEditPage: EventEmitter<boolean> = new EventEmitter();
+  //public isEditPage: EventEmitter<boolean> = new EventEmitter();
   constructor() { }
 
 

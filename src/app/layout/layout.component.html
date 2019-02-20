@@ -10,5 +10,8 @@
     </div>
 </div>
 <h1 class="sourcename">
-    {{!isMyNews ? mainTitle: 'my channel'}}
+    {{ isCreatePage ? 'create': !isMyNews ? mainTitle : 'my channel'}}
 </h1>
+<!--<h1 class="sourcename">-->
+  <!--{{ isCreatePage ? 'create': 'channe-cannel'}}-->
+<!--</h1>-->

@@ -195,7 +195,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"title\">Heading\n                <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\">\n                <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsDescription\">short Description\n                <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n                <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsContent\">content\n                <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n                <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n                </div>\n            </label>\n        </div>\n    </div>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"inputImage\">image\n                <input formControlName=\"image\" class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n                <div *ngIf=\"submitted && articleForm.controls.image.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.image.errors.required\" class=\"text-danger\">image is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputDate\">Date\n                <input formControlName=\"date\" type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n                <div *ngIf=\"submitted && articleForm.controls.date.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.date.errors.required\" class=\"text-danger\">date is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputUrl\">Source Url\n                <input formControlName=\"url\" class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n              <div *ngIf=\"submitted && articleForm.controls.url.errors\" class=\"warning\">\n                <div *ngIf=\"submitted && articleForm.controls.url.errors.required\" class=\"text-danger\">url is required</div>\n              </div>\n            </label>\n        </div>\n        <input [disabled]=\"articleForm.invalid\" routerLink=\"/news\" type=\"submit\" value=\"Save\" class=\"btn btn-success\">\n        <button routerLink=\"/news\" class=\"btn btn-warning\">Cancel</button>\n    </div>\n</form>\n"
+module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"title\">Heading\n                <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\">\n                <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsDescription\">short Description\n                <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n                <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsContent\">content\n                <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n                <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n                </div>\n            </label>\n        </div>\n    </div>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"inputImage\">image\n                <input formControlName=\"image\" class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n                <div *ngIf=\"submitted && articleForm.controls.image.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.image.errors.required\" class=\"text-danger\">image is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputDate\">Date\n                <input formControlName=\"date\" type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n                <div *ngIf=\"submitted && articleForm.controls.date.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.date.errors.required\" class=\"text-danger\">date is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputUrl\">Source Url\n                <input formControlName=\"url\" class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n              <div *ngIf=\"submitted && articleForm.controls.url.errors\" class=\"warning\">\n                <div *ngIf=\"submitted && articleForm.controls.url.errors.required\" class=\"text-danger\">url is required</div>\n              </div>\n            </label>\n        </div>\n      <button [disabled]=\"articleForm.invalid\" (click)=\"reRouteToMainPage('news')\" class=\"btn btn-success\">Save</button>\n        <button (click)=\"reRouteToMainPage('news')\" class=\"btn btn-warning\">Cancel</button>\n    </div>\n</form>\n"
 
 /***/ }),
 
@@ -223,12 +223,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _main_title_value_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main-title-value.service */ "./src/app/main-title-value.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 
 var ArticleCreateComponent = /** @class */ (function () {
-    function ArticleCreateComponent(formBuilder) {
+    function ArticleCreateComponent(formBuilder, mainTitleService, router) {
         this.formBuilder = formBuilder;
+        this.mainTitleService = mainTitleService;
+        this.router = router;
         this.submitted = false;
         this.success = false;
         this.title = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
@@ -252,6 +258,12 @@ var ArticleCreateComponent = /** @class */ (function () {
             return;
         }
         this.success = true;
+    };
+    ArticleCreateComponent.prototype.reRouteToMainPage = function (url) {
+        this.isCreatePage = false;
+        this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+        this.mainTitleService.isMyNewsAvailable.emit(this.isCreatePage);
+        this.router.navigate([url]);
     };
     ArticleCreateComponent.prototype.buildForm = function () {
         this.articleForm = this.formBuilder.group({
@@ -282,7 +294,7 @@ var ArticleCreateComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./article-create.component.html */ "./src/app/article-create/article-create.component.html"),
             styles: [__webpack_require__(/*! ./article-create.component.scss */ "./src/app/article-create/article-create.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _main_title_value_service__WEBPACK_IMPORTED_MODULE_3__["MainTitleValueService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], ArticleCreateComponent);
     return ArticleCreateComponent;
 }());
@@ -382,7 +394,7 @@ var ArticleEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\n        <div style=\"width: 300px;\">\n            <select class=\"form-control\" style=\"width: 300px; float: left;\" *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\n                <option *ngFor=\"let i of chanels\">{{i}}</option>\n            </select>\n        </div>\n        <div class=\"checkbox\">\n            <label><input class=\"form-control\" type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\" />only created by me</label>\n        </div>\n        <div class=\"addbutton\">\n            <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\n        </div>\n    </div>\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <div style=\"display: flex; align-content: center; justify-content: center;\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n    <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\n        <div style=\"width: 300px;\">\n            <select class=\"form-control\" style=\"width: 300px; float: left;\" *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\n                <option *ngFor=\"let i of chanels\">{{i}}</option>\n            </select>\n        </div>\n        <div class=\"checkbox\">\n            <label><input class=\"form-control\" type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\" />only created by me</label>\n        </div>\n        <div class=\"addbutton\">\n            <button class=\"btn btn-info\" (click)=\"reRouteToCreatePage('create')\">Add article</button>\n        </div>\n    </div>\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <div style=\"display: flex; align-content: center; justify-content: center;\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -443,13 +455,16 @@ var ArticleListComponent = /** @class */ (function () {
         this.myArticles = _news__WEBPACK_IMPORTED_MODULE_3__["myArticles"].slice(0, this.articlesCount); // and see onGetMyNews
         this.newsapifilerrender = false;
         this.myapifilerrender = false;
+        this.isCreatePage = false;
     }
     ArticleListComponent.prototype.ngOnInit = function () {
         if (!this.isMynews) {
             this.onGetWorldNews(this.chanels[0]);
         }
     };
-    ArticleListComponent.prototype.reRoute = function (url) {
+    ArticleListComponent.prototype.reRouteToCreatePage = function (url) {
+        this.isCreatePage = true;
+        this.mainTitleService.isCreatePage.emit(this.isCreatePage);
         this.router.navigate([url]);
     };
     ArticleListComponent.prototype.onGetWorldNews = function (chanel) {
@@ -617,7 +632,7 @@ var ArticleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout container\">\n    <div class=\"container\">\n        <label>\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\n        </label>\n        <div class=\"buttons\">\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\n        </div>\n    </div>\n</div>\n<h1 class=\"sourcename\">\n    {{!isMyNews ? mainTitle: 'my channel'}}\n</h1>\n"
+module.exports = "<div class=\"layout container\">\n    <div class=\"container\">\n        <label>\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\n        </label>\n        <div class=\"buttons\">\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\n        </div>\n    </div>\n</div>\n<h1 class=\"sourcename\">\n    {{ isCreatePage ? 'create': !isMyNews ? mainTitle : 'my channel'}}\n</h1>\n<!--<h1 class=\"sourcename\">-->\n  <!--{{ isCreatePage ? 'create': 'channe-cannel'}}-->\n<!--</h1>-->\n"
 
 /***/ }),
 
@@ -660,6 +675,9 @@ var LayoutComponent = /** @class */ (function () {
         this.mainTitleService.isMyNewsAvailable.subscribe(function (isMyNews) {
             _this.isMyNews = isMyNews;
         });
+        this.mainTitleService.isCreatePage.subscribe(function (isCreatePage) {
+            _this.isCreatePage = isCreatePage;
+        });
     };
     LayoutComponent.prototype.ngOnChanges = function () {
     };
@@ -693,11 +711,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MainTitleValueService = /** @class */ (function () {
+    //public isEditPage: EventEmitter<boolean> = new EventEmitter();
     function MainTitleValueService() {
         this.updatedTitleValue = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.isMyNewsAvailable = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.isCreatePage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.isEditPage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     MainTitleValueService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

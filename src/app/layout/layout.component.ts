@@ -9,7 +9,7 @@ import {MainTitleValueService} from '../main-title-value.service';
 export class LayoutComponent implements OnInit, OnChanges {
   public mainTitle: string;
   public isMyNews: boolean;
-
+  public isCreatePage: boolean;
 
   constructor(private mainTitleService: MainTitleValueService) { }
 
@@ -19,6 +19,9 @@ export class LayoutComponent implements OnInit, OnChanges {
     });
     this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
       this.isMyNews = isMyNews;
+    });
+    this.mainTitleService.isCreatePage.subscribe((isCreatePage: boolean) => {
+      this.isCreatePage = isCreatePage;
     });
   }
   ngOnChanges() {

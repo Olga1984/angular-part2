@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MainTitleValueService} from "../main-title-value.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-create',
@@ -7,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./article-create.component.scss']
 })
 export class ArticleCreateComponent implements OnInit {
+  isCreatePage: boolean;
 
   fullArticle: string;
   submitted = false;
@@ -28,7 +31,7 @@ export class ArticleCreateComponent implements OnInit {
     url: this.url
   });
 
-   constructor(private formBuilder: FormBuilder) {}
+   constructor(private formBuilder: FormBuilder, private mainTitleService: MainTitleValueService, private router: Router) {}
 
   onSubmit() {
     this.submitted = true;
@@ -36,6 +39,13 @@ export class ArticleCreateComponent implements OnInit {
       return;
     }
     this.success = true;
+  }
+
+  reRouteToMainPage(url: string) {
+    this.isCreatePage = false;
+    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+    this.mainTitleService.isMyNewsAvailable.emit(this.isCreatePage);
+    this.router.navigate([url]);
   }
 
   buildForm() {

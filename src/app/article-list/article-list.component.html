@@ -9,7 +9,7 @@
             <label><input class="form-control" type="checkbox" id="1" (change)="onFilterChange($event)" />only created by me</label>
         </div>
         <div class="addbutton">
-            <button class="btn btn-info" (click)="reRoute('create')">Add article</button>
+            <button class="btn btn-info" (click)="reRouteToCreatePage('create')">Add article</button>
         </div>
     </div>
     <app-article *ngIf="!isMynews" [isMynews]="isMynews" [articles]="articles" [isRenderButtons]="isMynews"></app-article>

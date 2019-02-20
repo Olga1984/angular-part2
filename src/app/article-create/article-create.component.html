@@ -52,7 +52,7 @@
               </div>
             </label>
         </div>
-        <input [disabled]="articleForm.invalid" routerLink="/news" type="submit" value="Save" class="btn btn-success">
-        <button routerLink="/news" class="btn btn-warning">Cancel</button>
+      <button [disabled]="articleForm.invalid" (click)="reRouteToMainPage('news')" class="btn btn-success">Save</button>
+        <button (click)="reRouteToMainPage('news')" class="btn btn-warning">Cancel</button>
     </div>
 </form>
