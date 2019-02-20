@@ -46,7 +46,10 @@
 
         <div class="form-group">
             <label for="inputUrl">Source Url
-                <input class="form-control" id="inputUrl" placeholder="Url">
+                <input formControlName="url" class="form-control" id="inputUrl" placeholder="Url">
+              <div *ngIf="submitted && articleForm.controls.url.errors" class="warning">
+                <div *ngIf="submitted && articleForm.controls.url.errors.required" class="text-danger">url is required</div>
+              </div>
             </label>
         </div>
         <input [disabled]="articleForm.invalid" routerLink="/news" type="submit" value="Save" class="btn btn-success">

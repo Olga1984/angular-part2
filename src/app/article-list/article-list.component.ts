@@ -3,7 +3,7 @@ import { WorldNewsApiService } from '../world-news-api.service';
 import { News, myArticles } from '../news';
 import { MyNewsApiService } from '../my-news-api.service';
 import { Router } from '@angular/router';
-import { MaintitlevalueService } from '../maintitlevalue.service';
+import { MainTitleValueService } from '../main-title-value.service';
 
 @Component({
   selector: 'app-article-list',
@@ -32,7 +32,7 @@ export class ArticleListComponent implements OnInit {
   newsapifilerrender = false;
   myapifilerrender = false;
 
-  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: MaintitlevalueService, private router: Router) {}
+  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: MainTitleValueService, private router: Router) {}
 
   ngOnInit() {
     if (!this.isMynews) {

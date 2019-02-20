@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
-import {MaintitlevalueService} from '../maintitlevalue.service';
+import {MainTitleValueService} from '../main-title-value.service';
 
 @Component({
   selector: 'app-layout',
@@ -10,7 +10,8 @@ export class LayoutComponent implements OnInit, OnChanges {
   public mainTitle: string;
   public isMyNews: boolean;
 
-  constructor(private mainTitleService: MaintitlevalueService) { }
+
+  constructor(private mainTitleService: MainTitleValueService) { }
 
   ngOnInit() {
     this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
