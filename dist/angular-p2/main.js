@@ -195,7 +195,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"title\">Heading\n                <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\">\n                <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsDescription\">short Description\n                <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n                <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsContent\">content\n                <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n                <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n                </div>\n            </label>\n        </div>\n    </div>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"inputImage\">image\n                <input formControlName=\"image\" class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n                <div *ngIf=\"submitted && articleForm.controls.image.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.image.errors.required\" class=\"text-danger\">image is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputDate\">Date\n                <input formControlName=\"date\" type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n                <div *ngIf=\"submitted && articleForm.controls.date.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.date.errors.required\" class=\"text-danger\">date is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputUrl\">Source Url\n                <input class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n            </label>\n        </div>\n        <input [disabled]=\"articleForm.invalid\" routerLink=\"/news\" type=\"submit\" value=\"Save\" class=\"btn btn-success\">\n        <button routerLink=\"/news\" class=\"btn btn-warning\">Cancel</button>\n    </div>\n</form>\n"
+module.exports = "<form [formGroup]=\"articleForm\" (ngSubmit)=\"onSubmit()\" style=\"display: flex; justify-content: center\" class=\"form container\" newsTitle.value=''>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"title\">Heading\n                <input formControlName=\"title\" #newsTitle class=\"form-control\" id=\"title\" placeholder=\"News Name\">\n                <div *ngIf=\"submitted && articleForm.controls.title.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.title.errors.required\" class=\"text-danger\">title is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsDescription\">short Description\n                <input formControlName=\"description\" #newsDescription class=\"form-control\" id=\"newsDescription\" placeholder=\"News Description\">\n                <div *ngIf=\"submitted && articleForm.controls.description.errors\" class=\"error\">\n                    <div *ngIf=\"submitted && articleForm.controls.description.errors.required\" class=\"text-danger\">description is required</div>\n                </div>\n            </label>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"newsContent\">content\n                <textarea formControlName=\"content\" class=\"form-control\" id=\"newsContent\" placeholder=\"News Description\"></textarea>\n                <div *ngIf=\"submitted && articleForm.controls.content.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.content.errors.required\" class=\"text-danger\">content is required</div>\n                </div>\n            </label>\n        </div>\n    </div>\n    <div style=\"margin: 5px\">\n        <div class=\"form-group\">\n            <label for=\"inputImage\">image\n                <input formControlName=\"image\" class=\"form-control\" id=\"inputImage\" placeholder=\"image\">\n                <div *ngIf=\"submitted && articleForm.controls.image.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.image.errors.required\" class=\"text-danger\">image is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputDate\">Date\n                <input formControlName=\"date\" type=\"password\" class=\"form-control\" id=\"inputDate\" placeholder=\"date\">\n                <div *ngIf=\"submitted && articleForm.controls.date.errors\" class=\"warning\">\n                    <div *ngIf=\"submitted && articleForm.controls.date.errors.required\" class=\"text-danger\">date is required</div>\n                </div>\n            </label>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"inputUrl\">Source Url\n                <input formControlName=\"url\" class=\"form-control\" id=\"inputUrl\" placeholder=\"Url\">\n              <div *ngIf=\"submitted && articleForm.controls.url.errors\" class=\"warning\">\n                <div *ngIf=\"submitted && articleForm.controls.url.errors.required\" class=\"text-danger\">url is required</div>\n              </div>\n            </label>\n        </div>\n        <input [disabled]=\"articleForm.invalid\" routerLink=\"/news\" type=\"submit\" value=\"Save\" class=\"btn btn-success\">\n        <button routerLink=\"/news\" class=\"btn btn-warning\">Cancel</button>\n    </div>\n</form>\n"
 
 /***/ }),
 
@@ -231,12 +231,19 @@ var ArticleCreateComponent = /** @class */ (function () {
         this.formBuilder = formBuilder;
         this.submitted = false;
         this.success = false;
-        this.articleForm = this.formBuilder.group({
-            title: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            description: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            content: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            image: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            date: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        this.title = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.description = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.content = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.image = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.date = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.url = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]);
+        this.articleForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            title: this.title,
+            description: this.description,
+            content: this.content,
+            image: this.image,
+            date: this.date,
+            url: this.url
         });
     }
     ArticleCreateComponent.prototype.onSubmit = function () {
@@ -246,7 +253,28 @@ var ArticleCreateComponent = /** @class */ (function () {
         }
         this.success = true;
     };
+    ArticleCreateComponent.prototype.buildForm = function () {
+        this.articleForm = this.formBuilder.group({
+            title: this.title,
+            description: this.description,
+            content: this.content,
+            image: this.image,
+            date: this.date,
+            url: this.url
+        });
+    };
     ArticleCreateComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.buildForm();
+        this.title.setValue('My awesome article');
+        this.description.setValue('My awesome article');
+        this.content.setValue('My awesome article');
+        this.image.setValue('My awesome article');
+        this.date.setValue('My awesome article');
+        this.articleForm.valueChanges.subscribe(function (data) {
+            _this.fullArticle = "" + data.title + data.description + data.content + data.image + data.date + data.url;
+            console.log(_this.fullArticle, 'this.fullArticle');
+        });
     };
     ArticleCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -354,7 +382,7 @@ var ArticleEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\r\n        <div style=\"width: 300px;\">\r\n            <select class=\"form-control\" style=\"width: 300px; float: left;\" *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\r\n                <option *ngFor=\"let i of chanels\">{{i}}</option>\r\n            </select>\r\n        </div>\r\n        <div class=\"checkbox\">\r\n            <label><input class=\"form-control\" type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\" />only created by me</label>\r\n        </div>\r\n        <div class=\"addbutton\">\r\n            <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\r\n        </div>\r\n    </div>\r\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\r\n    <div style=\"display: flex; align-content: center; justify-content: center;\">\r\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\n    <div style=\"margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;\">\n        <div style=\"width: 300px;\">\n            <select class=\"form-control\" style=\"width: 300px; float: left;\" *ngIf=\"!isMynews\" (change)=\"onGetWorldNews($event.target.value)\">\n                <option *ngFor=\"let i of chanels\">{{i}}</option>\n            </select>\n        </div>\n        <div class=\"checkbox\">\n            <label><input class=\"form-control\" type=\"checkbox\" id=\"1\" (change)=\"onFilterChange($event)\" />only created by me</label>\n        </div>\n        <div class=\"addbutton\">\n            <button class=\"btn btn-info\" (click)=\"reRoute('create')\">Add article</button>\n        </div>\n    </div>\n    <app-article *ngIf=\"!isMynews\" [isMynews]=\"isMynews\" [articles]=\"articles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <app-article *ngIf=\"isMynews\" [isMynews]=\"isMynews\" [articles]=\"myArticles\" [isRenderButtons]=\"isMynews\"></app-article>\n    <div style=\"display: flex; align-content: center; justify-content: center;\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addArticles()\">Load more</button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -385,7 +413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../news */ "./src/app/news.ts");
 /* harmony import */ var _my_news_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../my-news-api.service */ "./src/app/my-news-api.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _maintitlevalue_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../maintitlevalue.service */ "./src/app/maintitlevalue.service.ts");
+/* harmony import */ var _main_title_value_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../main-title-value.service */ "./src/app/main-title-value.service.ts");
 
 
 
@@ -474,7 +502,7 @@ var ArticleListComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./article-list.component.html */ "./src/app/article-list/article-list.component.html"),
             styles: [__webpack_require__(/*! ./article-list.component.scss */ "./src/app/article-list/article-list.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_world_news_api_service__WEBPACK_IMPORTED_MODULE_2__["WorldNewsApiService"], _my_news_api_service__WEBPACK_IMPORTED_MODULE_4__["MyNewsApiService"], _maintitlevalue_service__WEBPACK_IMPORTED_MODULE_6__["MaintitlevalueService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_world_news_api_service__WEBPACK_IMPORTED_MODULE_2__["WorldNewsApiService"], _my_news_api_service__WEBPACK_IMPORTED_MODULE_4__["MyNewsApiService"], _main_title_value_service__WEBPACK_IMPORTED_MODULE_6__["MainTitleValueService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], ArticleListComponent);
     return ArticleListComponent;
 }());
@@ -490,7 +518,7 @@ var ArticleListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"overflow: hidden;\">\r\n    <input class=\"form-control\" style=\"width: 300px; float: left;\" type=\"text\" #newsInput maxlength=\"1\" placeholder=\"Enter first title letter and click\">\r\n    <button class=\"btn btn-info\" (click)=\"changeFilter(newsInput.value)\">Filter</button>\r\n</div>\r\n<div class=\"container \">\r\n    <ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\r\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\r\n            <div class=\"text-left\" style=\"overflow: hidden;\">\r\n                <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\r\n                <h4>{{article.title | titlecase }}</h4>\r\n                <i>{{article.author | uppercase}}</i>\r\n                <p>{{article.description | lowercase}}</p>\r\n                <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>\r\n            </div>\r\n            <div *ngIf=\"isRenderButtons\" class=\"text-right\">\r\n                <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\r\n                <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\r\n                <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>\r\n"
+module.exports = "<div class=\"container\" style=\"overflow: hidden;\">\n    <input class=\"form-control\" style=\"width: 300px; float: left;\" type=\"text\" #newsInput maxlength=\"1\" placeholder=\"Enter first title letter and click\">\n    <button class=\"btn btn-info\" (click)=\"changeFilter(newsInput.value)\">Filter</button>\n</div>\n<div class=\"container \">\n    <ul class=\"list-group\" *ngFor=\"let article of articles | newsfilter: char\">\n        <li class=\"list-group-item\" style=\"margin: 5px 0; display: flex; justify-content: space-between; align-items: center\">\n            <div class=\"text-left\" style=\"overflow: hidden;\">\n                <img [src]=\"article.urlToImage || article.title\" style=\"height: 50px; float: left\">\n                <h4>{{article.title | titlecase }}</h4>\n                <i>{{article.author | uppercase}}</i>\n                <p>{{article.description | lowercase}}</p>\n                <div>Date:{{article.publishedAt | date:'dd.mm.yyyy hh:mm:ss'}}</div>\n            </div>\n            <div *ngIf=\"isRenderButtons\" class=\"text-right\">\n                <button routerLink=\"news/edit/{{article._id}}\" class=\"btn btn-info\" title=\"edit article\" (click)=\"update(article._id)\">Update</button>\n                <button class=\"btn btn-danger\" title=\"delete article\" (click)=\"delete(article)\">Delete</button>\n                <button (click)=\"reRoute('news/edit/1')\">go to edit article</button>\n            </div>\n        </li>\n    </ul>\n</div>\n"
 
 /***/ }),
 
@@ -589,7 +617,7 @@ var ArticleComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout container\">\r\n    <div class=\"container\">\r\n        <label>\r\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\r\n        </label>\r\n        <div class=\"buttons\">\r\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\r\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\r\n        </div>\r\n    </div>\r\n</div>\r\n<h1 class=\"sourcename\">\r\n    {{!isMyNews ? mainTitle: 'my channel'}}\r\n</h1>\r\n"
+module.exports = "<div class=\"layout container\">\n    <div class=\"container\">\n        <label>\n            <input class=\"form-control\" type=\"checkbox\" name=\"remember\"> Aggregator Logo\n        </label>\n        <div class=\"buttons\">\n            <button class=\"btn btn-warning\" type=\"submit\">User login</button>\n            <button class=\"btn btn-info\" type=\"submit\">Log out</button>\n        </div>\n    </div>\n</div>\n<h1 class=\"sourcename\">\n    {{!isMyNews ? mainTitle: 'my channel'}}\n</h1>\n"
 
 /***/ }),
 
@@ -600,7 +628,7 @@ module.exports = "<div class=\"layout container\">\r\n    <div class=\"container
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".layout .container {\n  margin: 20px 0;\n  display: flex;\n  justify-content: space-between; }\n\n.sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L0M6XFxVc2Vyc1xcT0xHQVxcRGVza3RvcFxcYW5ndWxhci1wYXJ0Mi9zcmNcXGFwcFxcbGF5b3V0XFxsYXlvdXQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxjQUFjO0VBQ2QsYUFBYTtFQUNiLDhCQUE4QixFQUFBOztBQUtsQztFQUNFLFlBQVk7RUFDWiwyQkFBMkI7RUFDM0Isa0JBQWtCO0VBQ2xCLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGF5b3V0L2xheW91dC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sYXlvdXQge1xyXG4gIC5jb250YWluZXIge1xyXG4gICAgbWFyZ2luOiAyMHB4IDA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgLmJ1dHRvbnMge1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG4uc291cmNlbmFtZSB7XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgZ3JleTtcclxufVxyXG4iXX0= */"
+module.exports = ".layout .container {\n  margin: 20px 0;\n  display: flex;\n  justify-content: space-between; }\n\n.sourcename {\n  height: 50px;\n  background-color: lightgray;\n  text-align: center;\n  border: 1px solid grey; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy92b2xoYV9raXJleWV2YS9EZXNrdG9wL2FuZ3VsYXItcGFydDIvc3JjL2FwcC9sYXlvdXQvbGF5b3V0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksY0FBYztFQUNkLGFBQWE7RUFDYiw4QkFBOEIsRUFBQTs7QUFLbEM7RUFDRSxZQUFZO0VBQ1osMkJBQTJCO0VBQzNCLGtCQUFrQjtFQUNsQixzQkFBc0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9sYXlvdXQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGF5b3V0IHtcbiAgLmNvbnRhaW5lciB7XG4gICAgbWFyZ2luOiAyMHB4IDA7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgLmJ1dHRvbnMge1xuICAgIH1cbiAgfVxufVxuLnNvdXJjZW5hbWUge1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXI6IDFweCBzb2xpZCBncmV5O1xufVxuIl19 */"
 
 /***/ }),
 
@@ -616,7 +644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LayoutComponent", function() { return LayoutComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _maintitlevalue_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../maintitlevalue.service */ "./src/app/maintitlevalue.service.ts");
+/* harmony import */ var _main_title_value_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../main-title-value.service */ "./src/app/main-title-value.service.ts");
 
 
 
@@ -641,7 +669,7 @@ var LayoutComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./layout.component.html */ "./src/app/layout/layout.component.html"),
             styles: [__webpack_require__(/*! ./layout.component.scss */ "./src/app/layout/layout.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_maintitlevalue_service__WEBPACK_IMPORTED_MODULE_2__["MaintitlevalueService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_main_title_value_service__WEBPACK_IMPORTED_MODULE_2__["MainTitleValueService"]])
     ], LayoutComponent);
     return LayoutComponent;
 }());
@@ -650,38 +678,34 @@ var LayoutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/maintitlevalue.service.ts":
-/*!*******************************************!*\
-  !*** ./src/app/maintitlevalue.service.ts ***!
-  \*******************************************/
-/*! exports provided: MaintitlevalueService */
+/***/ "./src/app/main-title-value.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/main-title-value.service.ts ***!
+  \*********************************************/
+/*! exports provided: MainTitleValueService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaintitlevalueService", function() { return MaintitlevalueService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainTitleValueService", function() { return MainTitleValueService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-var MaintitlevalueService = /** @class */ (function () {
-    function MaintitlevalueService() {
+var MainTitleValueService = /** @class */ (function () {
+    function MainTitleValueService() {
         this.updatedTitleValue = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.isMyNewsAvailable = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.isCreatePage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.isEditPage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
-    MaintitlevalueService.prototype.reportTitle = function (title) {
-        this.updatedTitleValue.emit(title);
-    };
-    MaintitlevalueService.prototype.myChannelTitleShow = function (isMyNewsAvailable) {
-        this.isMyNewsAvailable.emit(isMyNewsAvailable);
-    };
-    MaintitlevalueService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    MainTitleValueService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], MaintitlevalueService);
-    return MaintitlevalueService;
+    ], MainTitleValueService);
+    return MainTitleValueService;
 }());
 
 
@@ -873,30 +897,8 @@ var WorldNewsApiService = /** @class */ (function () {
     WorldNewsApiService.prototype.getWorldNews = function (channel) {
         return this.http.get("https://newsapi.org/v1/articles?source=" + channel + "&apiKey=554109c975e14549b32eb8b2f41fe8f8")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
-            console.log('response', response);
-            // const data = response.json();
             return response.articles;
         }));
-    };
-    WorldNewsApiService.prototype.getMyArticles = function (articles) {
-        console.log(articles);
-        return this.http.get('news');
-    };
-    WorldNewsApiService.prototype.getMyArticle = function (id) {
-        console.log(id);
-        return this.http.get('news/:id');
-    };
-    WorldNewsApiService.prototype.updateMyArticle = function (id) {
-        console.log(id);
-        return this.http.put('news/edit/:id', id);
-    };
-    WorldNewsApiService.prototype.deleteMyArticle = function (id) {
-        console.log(id);
-        return this.http.delete('news/delete/:id', id);
-    };
-    WorldNewsApiService.prototype.addMyArticle = function (article) {
-        console.log(article);
-        return this.http.post('news/create', article);
     };
     WorldNewsApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -972,7 +974,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\OLGA\Desktop\angular-part2\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/volha_kireyeva/Desktop/angular-part2/src/main.ts */"./src/main.ts");
 
 
 /***/ })
