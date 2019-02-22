@@ -3,7 +3,7 @@ import { WorldNewsApiService } from '../world-news-api.service';
 import { News, myArticles } from '../news';
 import { MyNewsApiService } from '../my-news-api.service';
 import { Router } from '@angular/router';
-import { MainTitleValueService } from '../main-title-value.service';
+import { EventEmitterService } from '../event-emitter.service';
 
 @Component({
   selector: 'app-article-list',
@@ -31,9 +31,9 @@ export class ArticleListComponent implements OnInit {
   sourceChanel: string;
   newsapifilerrender = false;
   myapifilerrender = false;
-  isCreatePage = false;
+  // isCreatePage = false;
 
-  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: MainTitleValueService, private router: Router) {}
+  constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: EventEmitterService, private router: Router) {}
 
   ngOnInit() {
     if (!this.isMynews) {
@@ -41,14 +41,14 @@ export class ArticleListComponent implements OnInit {
     }
   }
   reRouteToCreatePage(url) {
-    this.isCreatePage = true;
-    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+    // this.isCreatePage = true;
+    // this.mainTitleService.isCreatePage.emit(this.isCreatePage);
     this.router.navigate([url]);
   }
 
   onGetWorldNews(chanel: string) {
-    this.mainTitleService.updatedTitleValue.emit(chanel);
-
+    // this.mainTitleService.updatedTitleValue.emit(chanel);
+    this.mainTitleService.reportTitle(chanel);
     this.newsapifilerrender = true;
     this.myapifilerrender = false;
     if (this.sourceChanel === chanel) {
@@ -82,7 +82,7 @@ export class ArticleListComponent implements OnInit {
 
   onFilterChange(eve: any) {
     this.isMynews = !this.isMynews;
-    this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
+    //this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
     if (this.isMynews) {
       this.onGetMyNews();
       console.log('This is my news');

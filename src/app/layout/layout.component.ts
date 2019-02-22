@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
-import {MainTitleValueService} from '../main-title-value.service';
+import {EventEmitterService} from '../event-emitter.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,21 +8,24 @@ import {MainTitleValueService} from '../main-title-value.service';
 })
 export class LayoutComponent implements OnInit, OnChanges {
   public mainTitle: string;
-  public isMyNews: boolean;
-  public isCreatePage: boolean;
+  // public isMyNews: boolean;
+  // public isCreatePage: boolean;
 
-  constructor(private mainTitleService: MainTitleValueService) { }
+  constructor(private mainTitleService: EventEmitterService) { }
 
   ngOnInit() {
     this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
-        this.mainTitle = newsApiTitle;
+      this.mainTitle = newsApiTitle;
     });
-    this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
-      this.isMyNews = isMyNews;
-    });
-    this.mainTitleService.isCreatePage.subscribe((isCreatePage: boolean) => {
-      this.isCreatePage = isCreatePage;
-    });
+    // this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
+    //     this.mainTitle = newsApiTitle;
+    // });
+    // this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
+    //   this.isMyNews = isMyNews;
+    // });
+    // this.mainTitleService.isCreatePage.subscribe((isCreatePage: boolean) => {
+    //   this.isCreatePage = isCreatePage;
+    // });
   }
   ngOnChanges() {
   }

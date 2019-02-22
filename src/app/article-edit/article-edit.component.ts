@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { MyNewsApiService } from '../my-news-api.service';
-import {MainTitleValueService} from '../main-title-value.service';
+import {EventEmitterService} from '../event-emitter.service';
 
 @Component({
   selector: 'app-article-edit',
@@ -21,7 +21,7 @@ export class ArticleEditComponent implements OnInit {
     urlToImage: 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png',
     publishedAt: '2019-02-12T02:06:04Z'
   };
-  constructor(private route: ActivatedRoute, private data: MyNewsApiService, private mainTitleService: MainTitleValueService, private router: Router) {
+  constructor(private route: ActivatedRoute, private data: MyNewsApiService, private mainTitleService: EventEmitterService, private router: Router) {
     this.route.params.subscribe((params: Params) => {
       this.articleId = params.id;
     });
@@ -33,7 +33,7 @@ export class ArticleEditComponent implements OnInit {
   reRoute(url: string, IscreatePage: boolean) {
     this.isCreatePage = IscreatePage;
     this.router.navigate([url]);
-    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+    //this.mainTitleService.isCreatePage.emit(this.isCreatePage);
 
   }
   delete(id: string) {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MainTitleValueService} from '../main-title-value.service';
+import {EventEmitterService} from '../event-emitter.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./article-create.component.scss']
 })
 export class ArticleCreateComponent implements OnInit {
-  isCreatePage: boolean;
+  //isCreatePage: boolean;
 
   fullArticle: string;
   submitted = false;
@@ -31,7 +31,7 @@ export class ArticleCreateComponent implements OnInit {
     url: this.url
   });
 
-   constructor(private formBuilder: FormBuilder, private mainTitleService: MainTitleValueService, private router: Router) {}
+   constructor(private formBuilder: FormBuilder, private mainTitleService: EventEmitterService, private router: Router) {}
 
   onSubmit() {
     this.submitted = true;
@@ -42,9 +42,9 @@ export class ArticleCreateComponent implements OnInit {
   }
 
   reRouteToMainPage(url: string) {
-    this.isCreatePage = false;
-    this.mainTitleService.isCreatePage.emit(this.isCreatePage);
-    this.mainTitleService.isMyNewsAvailable.emit(this.isCreatePage);
+   // this.isCreatePage = false;
+    // this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+    // this.mainTitleService.isMyNewsAvailable.emit(this.isCreatePage);
     this.router.navigate([url]);
   }
 
@@ -60,6 +60,7 @@ export class ArticleCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+
      this.buildForm();
      this.title.setValue('My awesome article');
      this.description.setValue('My awesome article');
