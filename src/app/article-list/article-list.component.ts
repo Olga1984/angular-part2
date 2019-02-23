@@ -26,6 +26,7 @@ export class ArticleListComponent implements OnInit {
 
   articles: News[];
   isMynews = false;
+  extended = false;
 
   articlesCount = 4;
 

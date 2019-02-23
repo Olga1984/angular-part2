@@ -6,21 +6,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleComponent } from './article/article.component';
+import { ArticleContainerComponent } from './article-container/article-container.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleFormCreateEditComponent } from './article-form-create-edit/article-form-create-edit.component';
 import { NewsfilterPipe } from './components/newsfilter.pipe';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     ArticleListComponent,
-    ArticleComponent,
+    ArticleContainerComponent,
     ArticleEditComponent,
     ArticleFormCreateEditComponent,
-    NewsfilterPipe
+    NewsfilterPipe,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

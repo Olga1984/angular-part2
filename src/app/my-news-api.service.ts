@@ -50,8 +50,8 @@ export class MyNewsApiService {
   //   return this.http.delete<any>('news/delete/:id', id);
   // }
   //
-  // addMyArticle(article: any) {
-  //   console.log(article);
-  //   return this.http.post<any>('news/create', article);
+  // addMyArticle(article-container: any) {
+  //   console.log(article-container);
+  //   return this.http.post<any>('news/create', article-container);
   // }
 }

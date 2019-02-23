@@ -13,7 +13,7 @@ export class ArticleFormCreateEditComponent implements OnInit {
   pageName: string;
 
   urlSource: string = 'https://ichef.bbci.co.uk/news/1024/branded_news/7A23/production/_97176213_breaking_news_bigger.png';
-  imageSource: string;
+  imageSource: string = '';
   fileSource: string = 'file://news_bigger.png';
 
 

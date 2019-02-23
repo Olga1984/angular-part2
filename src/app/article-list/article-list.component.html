@@ -19,7 +19,7 @@
 
     <div class="container">
         <ul class="list-group" *ngFor="let newsArticle of articles | newsfilter: searchWord">
-            <app-article [isMynews]="isMynews" [article]="newsArticle"></app-article>
+            <app-article-container [isMynews]="isMynews" [article]="newsArticle"></app-article-container>
         </ul>
     </div>
 
