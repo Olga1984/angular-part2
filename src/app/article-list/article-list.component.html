@@ -10,7 +10,7 @@
             <button class="btn btn-info" (click)="searchFilter(newsInput.value)">Filter</button>
         </div>
         <div class="form-group">
-            <input class="form-control" type="checkbox" id="checkbox" (change)="onFilterChange($event)" /><span>only created by me</span>
+            <input class="form-control" type="checkbox" id="checkbox" (change)="onFilterChange($event)" /><label for="checkbox">only created by me</label>
         </div>
         <div class="form-group">
             <button class=" form-control btn-dark" (click)="reRouteToCreatePage('create')">Add article</button>
