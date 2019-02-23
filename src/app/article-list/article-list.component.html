@@ -1,19 +1,28 @@
 <div class="container">
-    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+    <div class="wrapper">
         <div class="form-group" style="width: 300px;">
-            <select class="form-control" style="width: 300px; float: left;" *ngIf="!isMynews" (change)="onGetWorldNews($event.target.value)">
+            <select class="form-control" *ngIf="!isMynews" (change)="onGetWorldNews($event.target.value)">
                 <option *ngFor="let i of chanels">{{i}}</option>
             </select>
         </div>
-        <div class="checkbox">
-            <label><input class="form-control" type="checkbox" id="1" (change)="onFilterChange($event)" />only created by me</label>
+        <div class="form-group" style="overflow: hidden;">
+            <input class="form-control" style="width: 300px; float: left;" type="text" #newsInput maxlength="10" placeholder="Enter word and click">
+            <button class="btn btn-info" (click)="searchFilter(newsInput.value)">Filter</button>
         </div>
-        <div class="addbutton">
-            <button class="btn btn-dark" (click)="reRouteToCreatePage('create')">Add article</button>
+        <div class="form-group">
+            <input class="form-control" type="checkbox" id="checkbox" (change)="onFilterChange($event)" /><span>only created by me</span>
+        </div>
+        <div class="form-group">
+            <button class=" form-control btn-dark" (click)="reRouteToCreatePage('create')">Add article</button>
         </div>
     </div>
-    <app-article *ngIf="!isMynews" [isMynews]="isMynews" [articles]="articles" [isRenderButtons]="isMynews"></app-article>
-    <app-article *ngIf="isMynews" [isMynews]="isMynews" [articles]="myArticles" [isRenderButtons]="isMynews"></app-article>
+
+    <div class="container">
+        <ul class="list-group" *ngFor="let newsArticle of articles | newsfilter: searchWord">
+            <app-article [isMynews]="isMynews" [article]="newsArticle"></app-article>
+        </ul>
+    </div>
+
     <div class="container" style="display: flex; align-content: center; justify-content: center;">
         <button type="submit" class="form-control btn btn-dark" (click)="addArticles()">Load more</button>
     </div>

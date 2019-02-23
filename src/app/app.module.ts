@@ -9,8 +9,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ArticleCreateComponent } from './article-create/article-create.component';
-import { NewsfilterPipe } from './newsfilter.pipe';
+import { ArticleFormCreateEditComponent } from './article-form-create-edit/article-form-create-edit.component';
+import { NewsfilterPipe } from './components/newsfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { NewsfilterPipe } from './newsfilter.pipe';
     ArticleListComponent,
     ArticleComponent,
     ArticleEditComponent,
-    ArticleCreateComponent,
+    ArticleFormCreateEditComponent,
     NewsfilterPipe
   ],
   imports: [

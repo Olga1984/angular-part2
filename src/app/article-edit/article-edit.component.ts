@@ -9,7 +9,6 @@ import {EventEmitterService} from '../event-emitter.service';
   styleUrls: ['./article-edit.component.scss']
 })
 export class ArticleEditComponent implements OnInit {
-  isCreatePage: boolean;
 
   articleId: any;
   article: object = {
@@ -30,11 +29,11 @@ export class ArticleEditComponent implements OnInit {
   ngOnInit() {
   // this.data.getArticle(this.article).subscribe(data => this.articleId = data);
   }
-  reRoute(url: string, IscreatePage: boolean) {
-    this.isCreatePage = IscreatePage;
+  reRoute(url: string, IsEditPage: boolean) {
+    if(IsEditPage){
+      this.mainTitleService.updatedTitleValue.emit('edit');
+    }
     this.router.navigate([url]);
-    //this.mainTitleService.isCreatePage.emit(this.isCreatePage);
-
   }
   delete(id: string) {
     console.log('delete');

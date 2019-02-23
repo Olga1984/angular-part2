@@ -26,12 +26,13 @@ export class ArticleListComponent implements OnInit {
 
   articles: News[];
   isMynews = false;
+
   articlesCount = 4;
+
   myArticles: News[] = myArticles.slice(0, this.articlesCount); // and see onGetMyNews
+
   sourceChanel: string;
-  newsapifilerrender = false;
-  myapifilerrender = false;
-  // isCreatePage = false;
+  searchWord: string;
 
   constructor(private apiService: WorldNewsApiService, private myNewsApi: MyNewsApiService, private mainTitleService: EventEmitterService, private router: Router) {}
 
@@ -40,17 +41,17 @@ export class ArticleListComponent implements OnInit {
     this.onGetWorldNews(this.chanels[0]);
     }
   }
+  searchFilter(word: string) {
+    this.searchWord = word;
+  }
   reRouteToCreatePage(url) {
-    // this.isCreatePage = true;
-    // this.mainTitleService.isCreatePage.emit(this.isCreatePage);
+    this.mainTitleService.updatedTitleValue.emit('create');
     this.router.navigate([url]);
   }
 
   onGetWorldNews(chanel: string) {
-    // this.mainTitleService.updatedTitleValue.emit(chanel);
-    this.mainTitleService.reportTitle(chanel);
-    this.newsapifilerrender = true;
-    this.myapifilerrender = false;
+    this.mainTitleService.updatedTitleValue.emit(chanel);
+
     if (this.sourceChanel === chanel) {
       this.apiService.getWorldNews(chanel).subscribe(
         (articles: News[]) => {
@@ -71,6 +72,7 @@ export class ArticleListComponent implements OnInit {
     }
   }
   onGetMyNews() {
+    this.mainTitleService.updatedTitleValue.emit('my chanel');
     // this.myNewsApi.getNews().subscribe(
     //   (articles: News[]) => {
     //     this.articles = articles.slice(0, this.articlesCount);
@@ -82,10 +84,11 @@ export class ArticleListComponent implements OnInit {
 
   onFilterChange(eve: any) {
     this.isMynews = !this.isMynews;
-    //this.mainTitleService.isMyNewsAvailable.emit(this.isMynews);
     if (this.isMynews) {
       this.onGetMyNews();
       console.log('This is my news');
+    }else {
+      this.mainTitleService.updatedTitleValue.emit(this.sourceChanel);
     }
   }
 

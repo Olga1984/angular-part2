@@ -6,27 +6,13 @@ import {EventEmitterService} from '../event-emitter.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit, OnChanges {
+export class LayoutComponent implements OnInit {
   public mainTitle: string;
-  // public isMyNews: boolean;
-  // public isCreatePage: boolean;
-
-  constructor(private mainTitleService: EventEmitterService) { }
+  constructor(private eventEmitterService: EventEmitterService) { }
 
   ngOnInit() {
-    this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
-      this.mainTitle = newsApiTitle;
+    this.eventEmitterService.updatedTitleValue.subscribe((title: string) => {
+      this.mainTitle = title;
     });
-    // this.mainTitleService.updatedTitleValue.subscribe((newsApiTitle: string) => {
-    //     this.mainTitle = newsApiTitle;
-    // });
-    // this.mainTitleService.isMyNewsAvailable.subscribe((isMyNews: boolean) => {
-    //   this.isMyNews = isMyNews;
-    // });
-    // this.mainTitleService.isCreatePage.subscribe((isCreatePage: boolean) => {
-    //   this.isCreatePage = isCreatePage;
-    // });
-  }
-  ngOnChanges() {
-  }
+   }
 }
